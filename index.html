@@ -26,60 +26,26 @@
     </div>
   </div>
 
-  <!-- 헤더 -->
+  <!-- 헤더: 상단 배너 + 메뉴 -->
   <header>
-    <div class="nav-inner">
-      <div class="brand" data-goto="home">
-        <img src="logo.jpg" alt="" class="logo-img" />
-        <span id="brand-name">태화라이온스클럽</span>
+    <div class="top-banner" data-goto="schedule">
+      <img src="logo.jpg" alt="태화라이온스클럽 로고" class="banner-logo" />
+      <div class="banner-text">
+        <div class="banner-name" id="brand-name">태화라이온스클럽</div>
+        <div class="banner-sub" id="brand-sub">국제라이온스협회 355D(울산·양산)지구</div>
       </div>
-      <button class="menu-btn" id="menu-btn" aria-label="메뉴">☰</button>
-      <nav id="main-nav">
-        <ul>
-          <li><a href="#" data-page="home">홈</a></li>
-          <li><a href="#" data-page="guide">안내자료</a></li>
-          <li><a href="#" data-page="schedule">일정</a></li>
-          <li><a href="#" data-page="members">회원명부</a></li>
-        </ul>
-      </nav>
     </div>
+    <nav class="navbar" id="main-nav">
+      <a href="#" data-page="schedule">📅 일정표</a>
+      <a href="#" data-page="members">👥 회원명부</a>
+    </nav>
   </header>
 
-  <!-- ============ 홈 ============ -->
-  <div class="page" id="home">
-    <section class="hero">
-      <img src="logo.jpg" alt="태화라이온스클럽 로고" class="hero-logo" id="hero-logo" />
-      <div class="hero-district" id="hero-district">국제라이온스협회 355D(울산 양산)지구</div>
-      <h1 id="hero-name">태화라이온스클럽</h1>
-      <p class="slogan" id="hero-slogan">우리는 봉사한다</p>
-      <p class="intro" id="hero-intro"></p>
-    </section>
-
-    <section class="block">
-      <div class="section-title">
-        <h2>임원진 <span>안내</span></h2>
-        <div class="line"></div>
-      </div>
-      <div class="officers" id="officers"></div>
-    </section>
-  </div>
-
-  <!-- ============ 안내자료 ============ -->
-  <div class="page" id="guide">
-    <section class="block">
-      <div class="section-title">
-        <h2>클럽 <span>안내자료</span></h2>
-        <div class="line"></div>
-      </div>
-      <div class="cards" id="guides"></div>
-    </section>
-  </div>
-
-  <!-- ============ 일정 ============ -->
+  <!-- ============ 일정표 ============ -->
   <div class="page" id="schedule">
     <section class="block">
       <div class="section-title">
-        <h2>행사 <span>일정</span></h2>
+        <h2>행사 <span>일정표</span></h2>
         <div class="line"></div>
       </div>
       <div class="timeline" id="events"></div>
@@ -93,6 +59,7 @@
         <h2>회원 <span>명부</span></h2>
         <div class="line"></div>
       </div>
+
 
       <!-- 명부 -->
       <div id="member-list">

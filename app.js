@@ -16,23 +16,19 @@ const WEEKDAYS = ["일", "월", "화", "수", "목", "금", "토"];
 /* ---------- 1. 기본 정보 렌더 ---------- */
 function renderClub() {
   const c = SITE_DATA.club;
-  document.title = c.name;
-  $("#brand-name").textContent = c.name;
-  $("#hero-name").textContent = c.name;
-  $("#hero-slogan").textContent = c.slogan;
-  $("#hero-intro").textContent = c.intro;
-  $("#foot-name").textContent = c.name;
+  const set = (sel, val) => { const e = $(sel); if (e && val != null) e.textContent = val; };
 
-  if (c.district) {
-    $("#hero-district").textContent = c.district;
-    $("#gate-district").textContent = c.district;
-  }
-  $("#gate-title").textContent = c.name;
-  if (c.slogan) $("#gate-slogan").textContent = c.slogan;
+  document.title = c.name;
+  set("#brand-name", c.name);
+  set("#brand-sub", c.district);
+  set("#foot-name", c.name);
+
+  set("#gate-title", c.name);
+  set("#gate-district", c.district);
+  set("#gate-slogan", c.slogan);
 
   if (c.logo) {
-    ["#gate-logo", "#hero-logo"].forEach((s) => { if ($(s)) $(s).src = c.logo; });
-    document.querySelectorAll(".logo-img").forEach((img) => (img.src = c.logo));
+    document.querySelectorAll(".banner-logo, .gate-logo").forEach((img) => (img.src = c.logo));
   }
 
   const founded = c.foundedYear ? `${c.foundedYear} 창립 · ` : "";
@@ -42,32 +38,7 @@ function renderClub() {
     (c.contactEmail ? `· ✉️ <a href="mailto:${c.contactEmail}">${c.contactEmail}</a>` : "");
 }
 
-/* ---------- 2. 안내자료 카드 ---------- */
-function renderGuides() {
-  const wrap = $("#guides");
-  SITE_DATA.guides.forEach((g) => {
-    const card = el("div", "card");
-    card.appendChild(el("div", "icon", g.icon || "💡"));
-    card.appendChild(el("h3", null, g.title));
-    card.appendChild(el("p", null, g.body));
-    wrap.appendChild(card);
-  });
-}
-
-/* ---------- 3. 임원진 ---------- */
-function renderOfficers() {
-  const wrap = $("#officers");
-  SITE_DATA.officers.forEach((o) => {
-    const card = el("div", "officer");
-    card.appendChild(el("span", "role", o.role));
-    card.appendChild(el("div", "name", o.name));
-    if (o.phone)
-      card.appendChild(el("div", "phone", `<a href="tel:${o.phone}">${o.phone}</a>`));
-    wrap.appendChild(card);
-  });
-}
-
-/* ---------- 4. 일정 ---------- */
+/* ---------- 일정 ---------- */
 function renderEvents() {
   const wrap = $("#events");
   const today = new Date();
@@ -150,15 +121,12 @@ function showPage(id) {
   if (page) page.classList.add("active");
   const link = document.querySelector(`nav a[data-page="${id}"]`);
   if (link) link.classList.add("active");
-  $("#main-nav").classList.remove("open");
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 /* ---------- 초기화 ---------- */
 window.addEventListener("DOMContentLoaded", () => {
   renderClub();
-  renderGuides();
-  renderOfficers();
   renderEvents();
   renderMembers();
 
@@ -172,9 +140,6 @@ window.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
-
-  // 모바일 메뉴
-  $("#menu-btn").addEventListener("click", () => $("#main-nav").classList.toggle("open"));
 
   // 접속 비밀번호
   $("#gate-submit").addEventListener("click", tryUnlock);
@@ -190,5 +155,5 @@ window.addEventListener("DOMContentLoaded", () => {
     $("#gate-pw").focus();
   }
 
-  showPage("home");
+  showPage("schedule");
 });
