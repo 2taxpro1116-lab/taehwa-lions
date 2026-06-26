@@ -28,6 +28,7 @@ function renderClub() {
     $("#gate-district").textContent = c.district;
   }
   $("#gate-title").textContent = c.name;
+  if (c.slogan) $("#gate-slogan").textContent = c.slogan;
 
   if (c.logo) {
     ["#gate-logo", "#hero-logo"].forEach((s) => { if ($(s)) $(s).src = c.logo; });
