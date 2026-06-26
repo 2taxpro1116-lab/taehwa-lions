@@ -21,21 +21,18 @@ function renderClub() {
   document.title = c.name;
   set("#brand-name", c.name);
   set("#brand-sub", c.district);
-  set("#foot-name", c.name);
 
   set("#gate-title", c.name);
   set("#gate-district", c.district);
   set("#gate-slogan", c.slogan);
 
+  set("#foot-name", c.name);
+  set("#foot-district", c.district);
+  set("#foot-slogan", c.slogan);
+
   if (c.logo) {
     document.querySelectorAll(".banner-logo, .gate-logo").forEach((img) => (img.src = c.logo));
   }
-
-  const founded = c.foundedYear ? `${c.foundedYear} 창립 · ` : "";
-  $("#foot-info").innerHTML =
-    `${founded}${c.region || ""}<br>` +
-    (c.contactPhone ? `📞 <a href="tel:${c.contactPhone}">${c.contactPhone}</a> ` : "") +
-    (c.contactEmail ? `· ✉️ <a href="mailto:${c.contactEmail}">${c.contactEmail}</a>` : "");
 }
 
 /* ---------- 행사 일정표 (월별 드롭다운) ---------- */
