@@ -110,6 +110,45 @@ function renderMembers() {
   $("#member-count").textContent = `총 ${SITE_DATA.members.length}명`;
 }
 
+/* ---------- 찬조/운영 현황 (범용 표) ---------- */
+function renderDataTable(cfg, tableId, noteId) {
+  const table = $(tableId);
+  if (!table || !cfg) return;
+
+  const note = $(noteId);
+  if (note) note.textContent = cfg.note || "";
+
+  const cols = cfg.columns || [];
+  const rows = cfg.rows || [];
+
+  const thead = el("thead");
+  const htr = el("tr");
+  cols.forEach((c) => htr.appendChild(el("th", null, c)));
+  thead.appendChild(htr);
+
+  const tbody = el("tbody");
+  if (rows.length === 0) {
+    const tr = el("tr");
+    const td = el("td", "empty", "아직 등록된 내용이 없습니다.");
+    td.setAttribute("colspan", cols.length || 1);
+    tr.appendChild(td);
+    tbody.appendChild(tr);
+  } else {
+    rows.forEach((r) => {
+      const tr = el("tr");
+      cols.forEach((_, i) => {
+        const v = r[i];
+        tr.appendChild(el("td", null, v == null ? "" : String(v).replace(/\n/g, "<br>")));
+      });
+      tbody.appendChild(tr);
+    });
+  }
+
+  table.innerHTML = "";
+  table.appendChild(thead);
+  table.appendChild(tbody);
+}
+
 /* ---------- 사이트 접속 비밀번호 게이트 ---------- */
 function openSite() {
   $("#gate").classList.add("hidden");
@@ -144,6 +183,8 @@ function showPage(id) {
 window.addEventListener("DOMContentLoaded", () => {
   renderClub();
   renderSchedule();
+  renderDataTable(SITE_DATA.donations, "#donations-table", "#donations-note");
+  renderDataTable(SITE_DATA.operations, "#operations-table", "#operations-note");
   renderMembers();
 
   // 네비게이션 클릭

@@ -37,6 +37,8 @@
     </div>
     <nav class="navbar" id="main-nav">
       <a href="#" data-page="schedule">📅 일정표</a>
+      <a href="#" data-page="donations">💰 찬조현황</a>
+      <a href="#" data-page="operations">📊 운영현황</a>
       <a href="#" data-page="members">👥 회원명부</a>
     </nav>
   </header>
@@ -49,6 +51,34 @@
         <div class="line"></div>
       </div>
       <div class="timeline" id="events"></div>
+    </section>
+  </div>
+
+  <!-- ============ 찬조현황 ============ -->
+  <div class="page" id="donations">
+    <section class="block">
+      <div class="section-title">
+        <h2>찬조 <span>현황</span></h2>
+        <div class="line"></div>
+      </div>
+      <div class="table-note" id="donations-note"></div>
+      <div class="member-table-wrap">
+        <table class="members" id="donations-table"></table>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ 운영현황 ============ -->
+  <div class="page" id="operations">
+    <section class="block">
+      <div class="section-title">
+        <h2>운영 <span>현황</span></h2>
+        <div class="line"></div>
+      </div>
+      <div class="table-note" id="operations-note"></div>
+      <div class="member-table-wrap">
+        <table class="members" id="operations-table"></table>
+      </div>
     </section>
   </div>
 
