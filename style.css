@@ -28,7 +28,7 @@ body {
     "맑은 고딕", "Apple SD Gothic Neo", sans-serif;
   color: var(--gray-800);
   background: var(--gray-50);
-  font-size: 20px;
+  font-size: 19px;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
 }
@@ -60,7 +60,7 @@ header {
   align-items: center;
   gap: 10px;
   font-weight: 800;
-  font-size: 22px;
+  font-size: 21px;
   color: var(--blue);
   cursor: pointer;
 }
@@ -84,7 +84,7 @@ nav a {
   text-decoration: none;
   color: var(--gray-600);
   font-weight: 600;
-  font-size: 19px;
+  font-size: 18px;
   transition: all 0.15s;
 }
 
@@ -125,13 +125,13 @@ nav a.active { background: var(--blue); color: #fff; }
 .hero-district {
   color: var(--gold);
   font-weight: 700;
-  font-size: 20px;
+  font-size: 19px;
   margin-bottom: 6px;
 }
 
-.hero h1 { font-size: 48px; font-weight: 900; letter-spacing: -1px; }
-.hero p.slogan { font-size: 25px; color: #ffffff; font-weight: 700; margin-top: 8px; }
-.hero p.intro { max-width: 640px; margin: 20px auto 0; opacity: 0.92; font-size: 20px; }
+.hero h1 { font-size: 47px; font-weight: 900; letter-spacing: -1px; }
+.hero p.slogan { font-size: 24px; color: #ffffff; font-weight: 700; margin-top: 8px; }
+.hero p.intro { max-width: 640px; margin: 20px auto 0; opacity: 0.92; font-size: 19px; }
 
 /* ---------- 섹션 공통 ---------- */
 section.block {
@@ -145,7 +145,7 @@ section.block {
   margin-bottom: 38px;
 }
 .section-title h2 {
-  font-size: 34px;
+  font-size: 33px;
   font-weight: 900;
   color: var(--gray-800);
 }
@@ -173,9 +173,9 @@ section.block {
   transition: transform 0.15s;
 }
 .card:hover { transform: translateY(-4px); }
-.card .icon { font-size: 42px; margin-bottom: 12px; }
-.card h3 { font-size: 24px; margin-bottom: 8px; color: var(--blue); }
-.card p { color: var(--gray-600); font-size: 19px; }
+.card .icon { font-size: 41px; margin-bottom: 12px; }
+.card h3 { font-size: 23px; margin-bottom: 8px; color: var(--blue); }
+.card p { color: var(--gray-600); font-size: 18px; }
 
 /* ---------- 임원진 ---------- */
 .officers {
@@ -196,14 +196,14 @@ section.block {
   display: inline-block;
   background: var(--blue);
   color: #fff;
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 700;
   padding: 4px 14px;
   border-radius: 999px;
   margin-bottom: 10px;
 }
-.officer .name { font-size: 24px; font-weight: 800; }
-.officer .phone { color: var(--gray-600); font-size: 18px; margin-top: 4px; }
+.officer .name { font-size: 23px; font-weight: 800; }
+.officer .phone { color: var(--gray-600); font-size: 17px; margin-top: 4px; }
 .officer .phone a { color: var(--gray-600); text-decoration: none; }
 
 /* ---------- 일정 ---------- */
@@ -228,17 +228,17 @@ section.block {
   padding: 10px 14px;
   min-width: 62px;
 }
-.event .date-box .month { font-size: 17px; color: var(--blue); font-weight: 700; }
-.event .date-box .day { font-size: 30px; font-weight: 900; line-height: 1; }
-.event .date-box .weekday { font-size: 16px; color: var(--gray-400); }
-.event .info h4 { font-size: 22px; margin-bottom: 3px; }
-.event .info .meta { font-size: 18px; color: var(--gray-600); }
+.event .date-box .month { font-size: 16px; color: var(--blue); font-weight: 700; }
+.event .date-box .day { font-size: 29px; font-weight: 900; line-height: 1; }
+.event .date-box .weekday { font-size: 15px; color: var(--gray-400); }
+.event .info h4 { font-size: 21px; margin-bottom: 3px; }
+.event .info .meta { font-size: 17px; color: var(--gray-600); }
 .event .info .meta b { color: var(--blue); font-weight: 700; }
 .event .badge-soon {
   margin-left: auto;
   background: var(--gold);
   color: var(--blue-dark);
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 800;
   padding: 5px 12px;
   border-radius: 999px;
@@ -296,13 +296,13 @@ table.members thead { background: var(--blue); color: #fff; }
 table.members th, table.members td {
   padding: 15px 18px;
   text-align: left;
-  font-size: 19px;
+  font-size: 18px;
   white-space: nowrap;
 }
 table.members tbody tr { border-top: 1px solid var(--gray-100); }
 table.members tbody tr:nth-child(even) { background: var(--gray-50); }
 table.members td a { color: var(--blue); text-decoration: none; font-weight: 600; }
-.member-count { text-align: center; color: var(--gray-600); margin-bottom: 16px; font-weight: 600; font-size: 20px; }
+.member-count { text-align: center; color: var(--gray-600); margin-bottom: 16px; font-weight: 600; font-size: 19px; }
 
 /* ---------- 푸터 ---------- */
 footer {
@@ -310,7 +310,7 @@ footer {
   color: #cfd6e0;
   text-align: center;
   padding: 36px 20px;
-  font-size: 18px;
+  font-size: 17px;
   margin-top: 40px;
 }
 footer .f-brand { color: var(--gold); font-weight: 800; font-size: 16px; margin-bottom: 6px; }
@@ -346,9 +346,9 @@ body.locked { overflow: hidden; }
   object-fit: contain;
   margin: 0 auto 14px;
 }
-.gate-district { color: var(--gray-600); font-weight: 600; font-size: 18px; letter-spacing: -0.3px; }
+.gate-district { color: var(--gray-600); font-weight: 600; font-size: 17px; letter-spacing: -0.3px; }
 .gate-title {
-  font-size: 36px;
+  font-size: 35px;
   font-weight: 900;
   color: var(--blue);
   letter-spacing: -1px;
@@ -358,7 +358,7 @@ body.locked { overflow: hidden; }
 .gate-slogan {
   color: var(--purple);
   font-weight: 700;
-  font-size: 19px;
+  font-size: 18px;
   margin-top: 8px;
   margin-bottom: 22px;
   letter-spacing: -0.2px;
@@ -366,7 +366,7 @@ body.locked { overflow: hidden; }
 .gate-card input {
   width: 100%;
   padding: 15px 16px;
-  font-size: 20px;
+  font-size: 19px;
   border: 2px solid var(--gray-200);
   border-radius: 12px;
   outline: none;
@@ -377,7 +377,7 @@ body.locked { overflow: hidden; }
   width: 100%;
   margin-top: 12px;
   padding: 16px;
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 800;
   color: #fff;
   background: var(--blue);
@@ -403,8 +403,8 @@ body.locked { overflow: hidden; }
   nav ul { flex-direction: column; padding: 10px 16px; gap: 2px; }
   nav a { display: block; padding: 12px 14px; }
   .menu-btn { display: block; }
-  .hero h1 { font-size: 36px; }
-  .hero p.slogan { font-size: 21px; }
-  .section-title h2 { font-size: 28px; }
-  .gate-title { font-size: 32px; }
+  .hero h1 { font-size: 35px; }
+  .hero p.slogan { font-size: 20px; }
+  .section-title h2 { font-size: 27px; }
+  .gate-title { font-size: 31px; }
 }
