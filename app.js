@@ -38,45 +38,63 @@ function renderClub() {
     (c.contactEmail ? `· ✉️ <a href="mailto:${c.contactEmail}">${c.contactEmail}</a>` : "");
 }
 
-/* ---------- 일정 ---------- */
-function renderEvents() {
+/* ---------- 행사 일정표 (월별 드롭다운) ---------- */
+function renderSchedule() {
   const wrap = $("#events");
   const today = new Date();
   today.setHours(0, 0, 0, 0);
   const soonLimit = new Date(today);
   soonLimit.setDate(soonLimit.getDate() + 14); // 14일 이내 = 곧 다가옴
 
-  const sorted = [...SITE_DATA.events].sort((a, b) => a.date.localeCompare(b.date));
-
-  sorted.forEach((ev) => {
-    const d = new Date(ev.date + "T00:00:00");
-    const isPast = d < today;
-    const isSoon = !isPast && d <= soonLimit;
-
-    const row = el("div", "event" + (isPast ? " past" : ""));
-
-    const dateBox = el("div", "date-box");
-    dateBox.appendChild(el("div", "month", `${d.getMonth() + 1}월`));
-    dateBox.appendChild(el("div", "day", d.getDate()));
-    dateBox.appendChild(el("div", "weekday", WEEKDAYS[d.getDay()] + "요일"));
-    row.appendChild(dateBox);
-
-    const info = el("div", "info");
-    info.appendChild(el("h4", null, ev.title));
-    let meta = "";
-    if (ev.time) meta += `🕐 <b>${ev.time}</b>  `;
-    if (ev.place) meta += `📍 ${ev.place}`;
-    if (ev.desc) meta += `<br>${ev.desc}`;
-    info.appendChild(el("div", "meta", meta));
-    row.appendChild(info);
-
-    if (isSoon) row.appendChild(el("span", "badge-soon", "곧 다가옴"));
-
-    wrap.appendChild(row);
-  });
-
-  if (sorted.length === 0)
+  const months = SITE_DATA.schedule || [];
+  if (months.length === 0) {
     wrap.appendChild(el("p", null, "등록된 일정이 없습니다."));
+    return;
+  }
+
+  months.forEach((m) => {
+    const acc = el("div", "accordion" + (m.open ? " open" : ""));
+
+    // 펼침 헤더
+    const header = el("button", "acc-header");
+    header.innerHTML =
+      `<span class="acc-title">${m.month}월 행사 일정표</span>` +
+      `<span class="acc-count">${m.items.length}건</span>` +
+      `<span class="acc-arrow">▾</span>`;
+    header.addEventListener("click", () => acc.classList.toggle("open"));
+    acc.appendChild(header);
+
+    // 내용
+    const body = el("div", "acc-body");
+    const sorted = [...m.items].sort((a, b) => a.day - b.day);
+
+    sorted.forEach((it) => {
+      const d = new Date(m.year, m.month - 1, it.day);
+      d.setHours(0, 0, 0, 0);
+      const isPast = d < today;
+      const isToday = d.getTime() === today.getTime();
+      const isSoon = !isPast && !isToday && d <= soonLimit;
+
+      const row = el("div", "event" + (isPast ? " past" : ""));
+
+      const dateBox = el("div", "date-box");
+      dateBox.appendChild(el("div", "day", it.day));
+      dateBox.appendChild(el("div", "weekday", WEEKDAYS[d.getDay()] + "요일"));
+      row.appendChild(dateBox);
+
+      const info = el("div", "info");
+      info.appendChild(el("h4", null, it.title));
+      row.appendChild(info);
+
+      if (isToday) row.appendChild(el("span", "badge-soon", "오늘"));
+      else if (isSoon) row.appendChild(el("span", "badge-soon", "곧 다가옴"));
+
+      body.appendChild(row);
+    });
+
+    acc.appendChild(body);
+    wrap.appendChild(acc);
+  });
 }
 
 /* ---------- 5. 회원명부 (비밀번호) ---------- */
@@ -127,7 +145,7 @@ function showPage(id) {
 /* ---------- 초기화 ---------- */
 window.addEventListener("DOMContentLoaded", () => {
   renderClub();
-  renderEvents();
+  renderSchedule();
   renderMembers();
 
   // 네비게이션 클릭
