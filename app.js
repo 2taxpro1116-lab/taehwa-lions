@@ -103,10 +103,8 @@ function renderMembers() {
   SITE_DATA.members.forEach((m) => {
     const tr = el("tr");
     tr.appendChild(el("td", null, `<b>${m.name}</b>`));
-    tr.appendChild(el("td", null, m.role || ""));
+    tr.appendChild(el("td", "role-cell", (m.role || "").replace(/\n/g, "<br>")));
     tr.appendChild(el("td", null, m.phone ? `<a href="tel:${m.phone}">${m.phone}</a>` : ""));
-    tr.appendChild(el("td", null, m.job || ""));
-    tr.appendChild(el("td", null, m.joined ? m.joined + "년" : ""));
     tbody.appendChild(tr);
   });
   $("#member-count").textContent = `총 ${SITE_DATA.members.length}명`;

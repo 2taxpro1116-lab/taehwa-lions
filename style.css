@@ -310,6 +310,7 @@ table.members th, table.members td {
 table.members tbody tr { border-top: 1px solid var(--gray-100); }
 table.members tbody tr:nth-child(even) { background: var(--gray-50); }
 table.members td a { color: var(--blue); text-decoration: none; font-weight: 600; }
+table.members td.role-cell { line-height: 1.35; color: var(--gray-600); }
 .member-count { text-align: center; color: var(--gray-600); margin-bottom: 16px; font-weight: 600; font-size: 19px; }
 
 /* ---------- 푸터 ---------- */
