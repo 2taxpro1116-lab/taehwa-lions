@@ -213,7 +213,7 @@ section.block {
 }
 .accordion.open .acc-arrow { transform: rotate(180deg); }
 
-.acc-body { display: none; padding: 16px 18px; }
+.acc-body { display: none; padding: 16px 18px; overflow-x: auto; }
 .accordion.open .acc-body { display: block; animation: fade 0.2s ease; }
 
 .event {
@@ -225,7 +225,10 @@ section.block {
   margin-bottom: 12px;
   border-left: 5px solid var(--blue);
   align-items: center;
+  width: max-content;
+  min-width: 100%;
 }
+.event .info h4 { white-space: nowrap; }
 .event:last-child { margin-bottom: 0; }
 .event.past { opacity: 0.5; border-left-color: var(--gray-400); }
 .event .date-box {
