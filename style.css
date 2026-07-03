@@ -465,4 +465,18 @@ body.locked { overflow: hidden; }
   .section-title h2 { font-size: 27px; }
   .gate-title { font-size: 31px; }
   .account-number { font-size: 22px; }
+
+  /* 모바일: 가로 스크롤 대신 줄바꿈으로 한 화면에 표시 */
+  table.members th, table.members td {
+    white-space: normal;
+    word-break: keep-all;
+    padding: 12px 10px;
+    font-size: 17px;
+  }
+  table.members td a[href^="tel:"] { white-space: nowrap; }
+
+  /* 일정표: 행사명 줄바꿈 허용, 가로 스크롤 제거 */
+  .acc-body { overflow-x: visible; }
+  .event { width: auto; min-width: 0; gap: 12px; padding: 14px; }
+  .event .info h4 { white-space: normal; }
 }
