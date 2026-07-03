@@ -198,7 +198,7 @@ section.block {
   text-align: left;
   font-family: inherit;
 }
-.acc-title { font-size: 22px; font-weight: 800; }
+.acc-title { font-size: 20px; font-weight: 800; }
 .acc-count {
   background: rgba(255, 255, 255, 0.22);
   font-size: 15px;
@@ -240,9 +240,9 @@ section.block {
   min-width: 62px;
 }
 .event .date-box .month { font-size: 16px; color: var(--blue); font-weight: 700; }
-.event .date-box .day { font-size: 29px; font-weight: 900; line-height: 1; }
-.event .date-box .weekday { font-size: 15px; color: var(--gray-400); }
-.event .info h4 { font-size: 21px; margin-bottom: 3px; }
+.event .date-box .day { font-size: 27px; font-weight: 900; line-height: 1; }
+.event .date-box .weekday { font-size: 14px; color: var(--gray-400); }
+.event .info h4 { font-size: 19px; line-height: 1.3; }
 .event .info .meta { font-size: 17px; color: var(--gray-600); }
 .event .info .meta b { color: var(--blue); font-weight: 700; }
 .event .badge-soon {
@@ -470,13 +470,20 @@ body.locked { overflow: hidden; }
   table.members th, table.members td {
     white-space: normal;
     word-break: keep-all;
-    padding: 12px 10px;
-    font-size: 17px;
+    padding: 10px 8px;
+    font-size: 15px;
   }
   table.members td a[href^="tel:"] { white-space: nowrap; }
 
-  /* 일정표: 행사명 줄바꿈 허용, 가로 스크롤 제거 */
-  .acc-body { overflow-x: visible; }
-  .event { width: auto; min-width: 0; gap: 12px; padding: 14px; }
-  .event .info h4 { white-space: normal; }
+  /* 일정표: 행사명 줄바꿈 허용, 가로 스크롤 제거, 글자 축소 */
+  .acc-body { overflow-x: visible; padding: 12px; }
+  .acc-header { padding: 16px 18px; }
+  .acc-title { font-size: 18px; }
+  .acc-count { font-size: 13px; }
+  .event { width: auto; min-width: 0; gap: 12px; padding: 13px; }
+  .event .info h4 { white-space: normal; font-size: 17px; }
+  .event .date-box { min-width: 54px; padding: 8px 10px; }
+  .event .date-box .day { font-size: 24px; }
+  .event .date-box .weekday { font-size: 13px; }
+  .event .badge-soon { font-size: 13px; padding: 4px 10px; }
 }

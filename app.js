@@ -80,7 +80,7 @@ function renderSchedule() {
       row.appendChild(dateBox);
 
       const info = el("div", "info");
-      info.appendChild(el("h4", null, it.title));
+      info.appendChild(el("h4", null, (it.title || "").replace(/\n/g, "<br>")));
       row.appendChild(info);
 
       if (isToday) row.appendChild(el("span", "badge-soon", "오늘"));
