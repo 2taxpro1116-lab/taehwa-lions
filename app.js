@@ -146,6 +146,55 @@ function renderDataTable(cfg, tableId, noteId) {
   table.appendChild(tbody);
 }
 
+/* ---------- 회비 납부안내 ---------- */
+function renderFee() {
+  const f = SITE_DATA.fee;
+  const wrap = $("#fee-content");
+  if (!f || !wrap) return;
+
+  const itemsHtml = f.items
+    .map(
+      (it, i) =>
+        `<tr>
+           <td class="fee-no">${i + 1}</td>
+           <td>${it.name}${it.detail ? ` <span class="fee-detail">${it.detail}</span>` : ""}</td>
+           <td class="fee-amt">${it.amount}</td>
+         </tr>`
+    )
+    .join("");
+
+  wrap.innerHTML =
+    (f.greeting ? `<p class="fee-greeting">${f.greeting.replace(/\n/g, "<br>")}</p>` : "") +
+    `<div class="member-table-wrap">
+       <table class="members fee-table">
+         <thead><tr><th>No</th><th>항목</th><th>금액</th></tr></thead>
+         <tbody>${itemsHtml}</tbody>
+         <tfoot><tr class="fee-total"><td colspan="2">합계</td><td class="fee-amt">${f.total}</td></tr></tfoot>
+       </table>
+     </div>` +
+    (f.totalNote ? `<p class="fee-note">※ ${f.totalNote}</p>` : "") +
+    (f.closing ? `<p class="fee-closing">${f.closing}</p>` : "") +
+    `<div class="account-box">
+       <div class="account-label">💳 회비 입금계좌</div>
+       <div class="account-number" id="acct-num">${f.account.bank} ${f.account.number}</div>
+       <div class="account-holder">예금주 : ${f.account.holder}</div>
+       <button class="account-copy" id="acct-copy">계좌번호 복사</button>
+     </div>` +
+    (f.signature ? `<p class="fee-sign">${f.signature}</p>` : "");
+
+  const copyBtn = $("#acct-copy");
+  if (copyBtn)
+    copyBtn.addEventListener("click", () => {
+      const txt = f.account.number;
+      const done = () => {
+        copyBtn.textContent = "복사됨 ✓";
+        setTimeout(() => (copyBtn.textContent = "계좌번호 복사"), 1500);
+      };
+      if (navigator.clipboard) navigator.clipboard.writeText(txt).then(done, done);
+      else done();
+    });
+}
+
 /* ---------- 사이트 접속 비밀번호 게이트 ---------- */
 function openSite() {
   $("#gate").classList.add("hidden");
@@ -183,6 +232,7 @@ window.addEventListener("DOMContentLoaded", () => {
   renderDataTable(SITE_DATA.donations, "#donations-table", "#donations-note");
   renderDataTable(SITE_DATA.operations, "#operations-table", "#operations-note");
   renderMembers();
+  renderFee();
 
   // 네비게이션 클릭
   document.querySelectorAll("nav a, [data-goto]").forEach((a) => {
