@@ -333,6 +333,41 @@ footer .f-brand { color: var(--gold); font-weight: 800; font-size: 22px; }
 footer .f-slogan { color: #aeb6c2; font-size: 15px; margin-top: 8px; }
 footer a { color: #cfd6e0; }
 
+/* ---------- 월별 활동내역 (사진 앨범) ---------- */
+.activity-desc { font-size: 18px; line-height: 1.6; margin-bottom: 16px; color: var(--gray-800); }
+.empty-msg { text-align: center; color: var(--gray-400); padding: 30px 10px; }
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+}
+.photo-thumb {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.photo-thumb:hover { transform: scale(1.03); box-shadow: var(--shadow); }
+
+/* 사진 크게보기 */
+#lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  background: rgba(0, 0, 0, 0.92);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  cursor: zoom-out;
+}
+#lightbox.open { display: flex; animation: fade 0.2s ease; }
+#lightbox img { max-width: 96%; max-height: 92%; object-fit: contain; border-radius: 8px; }
+
 /* ---------- 회비 납부안내 ---------- */
 .fee-greeting { text-align: center; font-size: 19px; line-height: 1.6; margin-bottom: 26px; }
 .fee-table { width: 100%; }

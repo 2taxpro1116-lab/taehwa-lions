@@ -37,6 +37,7 @@
     </div>
     <nav class="navbar" id="main-nav">
       <a href="#" data-page="schedule">📅 일정표</a>
+      <a href="#" data-page="activities">📷 활동내역</a>
       <a href="#" data-page="donations">💰 찬조현황</a>
       <a href="#" data-page="operations">📊 운영현황</a>
       <a href="#" data-page="members">👥 회원명부</a>
@@ -52,6 +53,17 @@
         <div class="line"></div>
       </div>
       <div class="timeline" id="events"></div>
+    </section>
+  </div>
+
+  <!-- ============ 월별 활동내역 ============ -->
+  <div class="page" id="activities">
+    <section class="block">
+      <div class="section-title">
+        <h2>월별 <span>활동내역</span></h2>
+        <div class="line"></div>
+      </div>
+      <div id="activities-content"></div>
     </section>
   </div>
 
@@ -124,6 +136,11 @@
     <div class="f-brand" id="foot-name">태화라이온스클럽</div>
     <div class="f-slogan" id="foot-slogan">Serve to Change 세상을 바꾸는 봉사</div>
   </footer>
+
+  <!-- 사진 크게보기 -->
+  <div id="lightbox">
+    <img id="lightbox-img" alt="활동사진" />
+  </div>
 
   <script src="data.js"></script>
   <script src="app.js"></script>

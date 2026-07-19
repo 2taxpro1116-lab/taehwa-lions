@@ -107,6 +107,69 @@ function renderMembers() {
   $("#member-count").textContent = `총 ${SITE_DATA.members.length}명`;
 }
 
+/* ---------- 월별 활동내역 (사진 앨범) ---------- */
+function renderActivities() {
+  const wrap = $("#activities-content");
+  if (!wrap) return;
+
+  const list = SITE_DATA.activities || [];
+  if (list.length === 0) {
+    wrap.innerHTML = '<p class="empty-msg">아직 등록된 활동내역이 없습니다.</p>';
+    return;
+  }
+
+  wrap.innerHTML = "";
+  list.forEach((a) => {
+    const photos = a.photos || [];
+    const acc = el("div", "accordion" + (a.open ? " open" : ""));
+
+    const header = el("button", "acc-header");
+    header.innerHTML =
+      `<span class="acc-title">${a.month}월 활동내역</span>` +
+      `<span class="acc-count">사진 ${photos.length}장</span>` +
+      `<span class="acc-arrow">▾</span>`;
+    header.addEventListener("click", () => acc.classList.toggle("open"));
+    acc.appendChild(header);
+
+    const body = el("div", "acc-body");
+    if (a.desc) body.appendChild(el("p", "activity-desc", a.desc.replace(/\n/g, "<br>")));
+
+    if (photos.length) {
+      const grid = el("div", "photo-grid");
+      photos.forEach((src) => {
+        const img = el("img", "photo-thumb");
+        img.src = src;
+        img.loading = "lazy";
+        img.alt = `${a.month}월 활동사진`;
+        img.addEventListener("click", () => openLightbox(src));
+        grid.appendChild(img);
+      });
+      body.appendChild(grid);
+    } else if (!a.desc) {
+      body.appendChild(el("p", "empty-msg", "사진 준비 중입니다."));
+    }
+
+    acc.appendChild(body);
+    wrap.appendChild(acc);
+  });
+}
+
+function openLightbox(src) {
+  const lb = $("#lightbox");
+  const img = $("#lightbox-img");
+  if (!lb || !img) return;
+  img.src = src;
+  lb.classList.add("open");
+  document.body.classList.add("locked");
+}
+
+function closeLightbox() {
+  const lb = $("#lightbox");
+  if (!lb) return;
+  lb.classList.remove("open");
+  document.body.classList.remove("locked");
+}
+
 /* ---------- 찬조/운영 현황 (범용 표) ---------- */
 function renderDataTable(cfg, tableId, noteId) {
   const table = $(tableId);
@@ -229,6 +292,7 @@ function showPage(id) {
 window.addEventListener("DOMContentLoaded", () => {
   renderClub();
   renderSchedule();
+  renderActivities();
   renderDataTable(SITE_DATA.donations, "#donations-table", "#donations-note");
   renderDataTable(SITE_DATA.operations, "#operations-table", "#operations-note");
   renderMembers();
@@ -243,6 +307,13 @@ window.addEventListener("DOMContentLoaded", () => {
         showPage(target);
       }
     });
+  });
+
+  // 사진 크게보기 닫기 (아무 곳이나 클릭)
+  const lb = $("#lightbox");
+  if (lb) lb.addEventListener("click", closeLightbox);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeLightbox();
   });
 
   // 접속 비밀번호
