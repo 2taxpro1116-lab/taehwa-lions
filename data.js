@@ -136,7 +136,11 @@ const SITE_DATA = {
 
 2026–2027 태화라이온스클럽
 회장 최연식 L 드림`,
-          photos: ["photos/2026-07-handover-1.jpg"],
+          photos: [
+            "photos/2026-07-handover-1.jpg",
+            "photos/2026-07-handover-2.jpg",
+            "photos/2026-07-handover-3.jpg",
+          ],
         },
         {
           title: "2026–27 보은라이온스클럽 이·취임식 방문",
@@ -156,7 +160,17 @@ const SITE_DATA = {
 
 2026–2027 태화라이온스클럽
 회장 최연식 L 드림`,
-          photos: ["photos/2026-07-boeun-1.jpg"],
+          photos: [
+            "photos/2026-07-boeun-1.jpg",
+            "photos/2026-07-boeun-2.jpg",
+            "photos/2026-07-boeun-3.jpg",
+            "photos/2026-07-boeun-4.jpg",
+            "photos/2026-07-boeun-5.jpg",
+            "photos/2026-07-boeun-6.jpg",
+            "photos/2026-07-boeun-7.jpg",
+            "photos/2026-07-boeun-8.jpg",
+            "photos/2026-07-boeun-9.jpg",
+          ],
         },
         {
           title: "태화라이온스클럽 제437차 이사회 결과보고",
@@ -179,7 +193,12 @@ const SITE_DATA = {
 
 2026–2027 태화라이온스클럽
 회장 최연식 L 드림`,
-          photos: ["photos/2026-07-board437-1.jpg"],
+          photos: [
+            "photos/2026-07-board437-1.jpg",
+            "photos/2026-07-board437-2.jpg",
+            "photos/2026-07-board437-3.jpg",
+            "photos/2026-07-board437-4.jpg",
+          ],
         },
         {
           title: "김태운 L 병문안",
@@ -214,7 +233,19 @@ const SITE_DATA = {
 
 2026–2027 태화라이온스클럽
 회장 최연식 L 드림`,
-          photos: ["photos/2026-07-seminar-1.jpg"],
+          photos: [
+            "photos/2026-07-seminar-1.jpg",
+            "photos/2026-07-seminar-2.jpg",
+            "photos/2026-07-seminar-3.jpg",
+            "photos/2026-07-seminar-4.jpg",
+            "photos/2026-07-seminar-5.jpg",
+            "photos/2026-07-seminar-6.jpg",
+            "photos/2026-07-seminar-7.jpg",
+            "photos/2026-07-seminar-8.jpg",
+            "photos/2026-07-seminar-9.jpg",
+            "photos/2026-07-seminar-10.jpg",
+            "photos/2026-07-seminar-11.jpg",
+          ],
         },
       ],
     },
