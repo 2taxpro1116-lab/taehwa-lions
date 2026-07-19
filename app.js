@@ -118,36 +118,49 @@ function renderActivities() {
     return;
   }
 
+  const hasContent = list.some((m) => (m.posts || []).length);
+  if (!hasContent) {
+    wrap.innerHTML = '<p class="empty-msg">아직 등록된 활동내역이 없습니다.</p>';
+    return;
+  }
+
   wrap.innerHTML = "";
-  list.forEach((a) => {
-    const photos = a.photos || [];
-    const acc = el("div", "accordion" + (a.open ? " open" : ""));
+  list.forEach((m) => {
+    const posts = m.posts || [];
+    const acc = el("div", "accordion" + (m.open ? " open" : ""));
 
     const header = el("button", "acc-header");
     header.innerHTML =
-      `<span class="acc-title">${a.month}월 활동내역</span>` +
-      `<span class="acc-count">사진 ${photos.length}장</span>` +
+      `<span class="acc-title">${m.month}월 활동내역</span>` +
+      `<span class="acc-count">${posts.length}건</span>` +
       `<span class="acc-arrow">▾</span>`;
     header.addEventListener("click", () => acc.classList.toggle("open"));
     acc.appendChild(header);
 
     const body = el("div", "acc-body");
-    if (a.desc) body.appendChild(el("p", "activity-desc", a.desc.replace(/\n/g, "<br>")));
+    if (posts.length === 0) body.appendChild(el("p", "empty-msg", "준비 중입니다."));
 
-    if (photos.length) {
-      const grid = el("div", "photo-grid");
-      photos.forEach((src) => {
-        const img = el("img", "photo-thumb");
-        img.src = src;
-        img.loading = "lazy";
-        img.alt = `${a.month}월 활동사진`;
-        img.addEventListener("click", () => openLightbox(src));
-        grid.appendChild(img);
-      });
-      body.appendChild(grid);
-    } else if (!a.desc) {
-      body.appendChild(el("p", "empty-msg", "사진 준비 중입니다."));
-    }
+    posts.forEach((p) => {
+      const card = el("div", "activity-post");
+      if (p.title) card.appendChild(el("h3", "post-title", p.title));
+      if (p.date) card.appendChild(el("div", "post-date", "📅 " + p.date));
+      if (p.body) card.appendChild(el("p", "post-body", p.body.replace(/\n/g, "<br>")));
+
+      const photos = p.photos || [];
+      if (photos.length) {
+        const grid = el("div", "photo-grid");
+        photos.forEach((src) => {
+          const img = el("img", "photo-thumb");
+          img.src = src;
+          img.loading = "lazy";
+          img.alt = p.title || "활동사진";
+          img.addEventListener("click", () => openLightbox(src));
+          grid.appendChild(img);
+        });
+        card.appendChild(grid);
+      }
+      body.appendChild(card);
+    });
 
     acc.appendChild(body);
     wrap.appendChild(acc);

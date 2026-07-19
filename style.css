@@ -334,8 +334,13 @@ footer .f-slogan { color: #aeb6c2; font-size: 15px; margin-top: 8px; }
 footer a { color: #cfd6e0; }
 
 /* ---------- 월별 활동내역 (사진 앨범) ---------- */
-.activity-desc { font-size: 18px; line-height: 1.6; margin-bottom: 16px; color: var(--gray-800); }
 .empty-msg { text-align: center; color: var(--gray-400); padding: 30px 10px; }
+
+.activity-post { padding-bottom: 22px; margin-bottom: 22px; border-bottom: 1px solid var(--gray-200); }
+.activity-post:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.post-title { font-size: 21px; color: var(--blue); margin-bottom: 6px; line-height: 1.3; }
+.post-date { color: var(--gray-600); font-size: 15px; font-weight: 600; margin-bottom: 14px; }
+.post-body { font-size: 18px; line-height: 1.65; margin-bottom: 16px; color: var(--gray-800); white-space: normal; }
 
 .photo-grid {
   display: grid;
