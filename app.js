@@ -302,7 +302,7 @@ function showPage(id) {
 }
 
 /* ---------- 초기화 ---------- */
-window.addEventListener("DOMContentLoaded", () => {
+function init() {
   renderClub();
   renderSchedule();
   renderActivities();
@@ -344,4 +344,11 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   showPage("schedule");
-});
+}
+
+// app.js가 동적으로(나중에) 로드돼도 안전하게 초기화
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", init);
+} else {
+  init();
+}

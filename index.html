@@ -8,7 +8,8 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" as="style" crossorigin
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
-  <link rel="stylesheet" href="style.css" />
+  <!-- 캐시 방지: 스타일을 항상 최신으로 -->
+  <script>document.write('<link rel="stylesheet" href="style.css?t=' + Date.now() + '">');</script>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦁</text></svg>" />
 </head>
 <body>
@@ -142,7 +143,19 @@
     <img id="lightbox-img" alt="활동사진" />
   </div>
 
-  <script src="data.js"></script>
-  <script src="app.js"></script>
+  <!-- 캐시 방지: data.js(내용)와 app.js를 항상 최신으로 불러오기 -->
+  <script>
+    (function () {
+      var t = Date.now();
+      var d = document.createElement("script");
+      d.src = "data.js?t=" + t;
+      d.onload = function () {
+        var a = document.createElement("script");
+        a.src = "app.js?t=" + t;
+        document.body.appendChild(a);
+      };
+      document.body.appendChild(d);
+    })();
+  </script>
 </body>
 </html>
