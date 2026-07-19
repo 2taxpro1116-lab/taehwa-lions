@@ -124,9 +124,18 @@ function renderActivities() {
     return;
   }
 
+  // 날짜(예: "7월 6일")에서 일(day) 숫자 추출 — 정렬용
+  const dayOf = (s) => {
+    const m = String(s || "").match(/(\d+)\s*일/);
+    return m ? +m[1] : 0;
+  };
+
+  // 최신순: 월 내림차순, 같은 달 안에서는 날짜 내림차순
+  const months = [...list].sort((a, b) => (b.year - a.year) || (b.month - a.month));
+
   wrap.innerHTML = "";
-  list.forEach((m) => {
-    const posts = m.posts || [];
+  months.forEach((m) => {
+    const posts = [...(m.posts || [])].sort((a, b) => dayOf(b.date) - dayOf(a.date));
     const acc = el("div", "accordion" + (m.open ? " open" : ""));
 
     const header = el("button", "acc-header");
