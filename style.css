@@ -341,7 +341,19 @@ footer a { color: #cfd6e0; }
 .post-title { font-size: 21px; color: var(--blue); margin-bottom: 6px; line-height: 1.3; }
 .post-date { color: var(--gray-600); font-size: 15px; font-weight: 600; margin-bottom: 14px; }
 .post-body { font-size: 18px; line-height: 1.65; margin-bottom: 16px; color: var(--gray-800); white-space: normal; }
-.bylaws-body { font-size: 17px; line-height: 1.8; color: var(--gray-800); }
+.bylaws-body { font-size: 17px; line-height: 1.75; color: var(--gray-800); }
+.bylaws-chapter {
+  font-size: 19px;
+  font-weight: 800;
+  color: var(--blue);
+  margin: 24px 0 12px;
+  padding-bottom: 7px;
+  border-bottom: 2px solid var(--gray-200);
+}
+.bylaws-body > .bylaws-chapter:first-child { margin-top: 0; }
+.bylaws-article { font-weight: 700; margin-top: 14px; }
+.bylaws-line { margin-top: 4px; }
+.bylaws-gap { height: 6px; }
 
 .photo-grid {
   display: grid;

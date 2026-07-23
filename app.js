@@ -305,8 +305,20 @@ function renderBylaws() {
     header.addEventListener("click", () => acc.classList.toggle("open"));
     acc.appendChild(header);
 
+    const html = (s.body || "")
+      .split("\n")
+      .map((line) => {
+        const t = line.trim();
+        if (!t) return '<div class="bylaws-gap"></div>';
+        if (/^제\s*\d+\s*장/.test(t) || /^부\s*칙/.test(t))
+          return `<div class="bylaws-chapter">${t}</div>`;
+        if (/^제\s*\d+\s*조/.test(t)) return `<div class="bylaws-article">${t}</div>`;
+        return `<div class="bylaws-line">${t}</div>`;
+      })
+      .join("");
+
     const body = el("div", "acc-body");
-    body.appendChild(el("div", "bylaws-body", (s.body || "").replace(/\n/g, "<br>")));
+    body.appendChild(el("div", "bylaws-body", html));
     acc.appendChild(body);
     wrap.appendChild(acc);
   });
