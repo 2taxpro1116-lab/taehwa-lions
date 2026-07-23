@@ -296,8 +296,9 @@ function renderBylaws() {
   }
 
   wrap.innerHTML = "";
-  sections.forEach((s, i) => {
-    const acc = el("div", "accordion" + (i === 0 ? " open" : ""));
+  sections.forEach((s) => {
+    // 처음에는 모두 접힌 상태(목차만 보이기)
+    const acc = el("div", "accordion");
     const header = el("button", "acc-header");
     header.innerHTML =
       `<span class="acc-title">${s.title || ""}</span>` +
