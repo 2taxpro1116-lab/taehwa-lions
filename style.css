@@ -514,7 +514,13 @@ body.locked { overflow: hidden; }
   .banner-logo { width: 60px; height: 60px; }
   .banner-name { font-size: 25px; }
   .banner-sub { font-size: 14px; }
-  .navbar a { padding: 9px 22px; font-size: 18px; }
+  /* 메뉴를 더 촘촘하게 (줄 수 줄이기) */
+  .navbar { gap: 7px; padding: 10px 10px; }
+  .navbar a { padding: 8px 15px; font-size: 17px; }
+
+  /* 스크롤 내리면 상단 숨김 / 올리면 다시 표시 */
+  header { transition: transform 0.28s ease; }
+  header.nav-hidden { transform: translateY(-100%); }
   .section-title h2 { font-size: 27px; }
   .gate-title { font-size: 31px; }
   .account-number { font-size: 22px; }

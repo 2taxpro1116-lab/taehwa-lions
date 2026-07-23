@@ -352,6 +352,8 @@ function showPage(id) {
   if (page) page.classList.add("active");
   const link = document.querySelector(`nav a[data-page="${id}"]`);
   if (link) link.classList.add("active");
+  const hdr = document.querySelector("header");
+  if (hdr) hdr.classList.remove("nav-hidden"); // 메뉴 이동 시 상단 다시 보이기
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
@@ -376,6 +378,21 @@ function init() {
       }
     });
   });
+
+  // 모바일: 아래로 스크롤하면 상단 숨김, 위로 올리면 다시 표시
+  const header = document.querySelector("header");
+  let lastY = window.scrollY;
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (!header) return;
+      const y = window.scrollY;
+      if (y > 150 && y > lastY + 6) header.classList.add("nav-hidden");
+      else if (y < lastY - 6 || y < 90) header.classList.remove("nav-hidden");
+      lastY = y;
+    },
+    { passive: true }
+  );
 
   // 사진 크게보기 닫기 (아무 곳이나 클릭)
   const lb = $("#lightbox");
