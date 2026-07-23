@@ -280,6 +280,38 @@ function renderFee() {
     });
 }
 
+/* ---------- 클럽정관 (장별 드롭다운) ---------- */
+function renderBylaws() {
+  const wrap = $("#bylaws-content");
+  if (!wrap) return;
+
+  const b = SITE_DATA.bylaws || {};
+  const note = $("#bylaws-note");
+  if (note) note.textContent = b.note || "";
+
+  const sections = b.sections || [];
+  if (sections.length === 0) {
+    wrap.innerHTML = '<p class="empty-msg">정관 내용이 곧 등록될 예정입니다.</p>';
+    return;
+  }
+
+  wrap.innerHTML = "";
+  sections.forEach((s, i) => {
+    const acc = el("div", "accordion" + (i === 0 ? " open" : ""));
+    const header = el("button", "acc-header");
+    header.innerHTML =
+      `<span class="acc-title">${s.title || ""}</span>` +
+      `<span class="acc-arrow">▾</span>`;
+    header.addEventListener("click", () => acc.classList.toggle("open"));
+    acc.appendChild(header);
+
+    const body = el("div", "acc-body");
+    body.appendChild(el("div", "bylaws-body", (s.body || "").replace(/\n/g, "<br>")));
+    acc.appendChild(body);
+    wrap.appendChild(acc);
+  });
+}
+
 /* ---------- 사이트 접속 비밀번호 게이트 ---------- */
 function openSite() {
   $("#gate").classList.add("hidden");
@@ -319,6 +351,7 @@ function init() {
   renderDataTable(SITE_DATA.operations, "#operations-table", "#operations-note");
   renderMembers();
   renderFee();
+  renderBylaws();
 
   // 네비게이션 클릭
   document.querySelectorAll("nav a, [data-goto]").forEach((a) => {
