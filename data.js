@@ -106,7 +106,6 @@ const SITE_DATA = {
         { day: 12, title: "골프회\n정기라운딩" },
         { day: 14, title: "이사회" },
         { day: 15, title: "부부합동월례회" },
-        { day: 24, title: "월례회" },
         { day: 28, title: "도산급식 봉사활동" },
       ],
     },
