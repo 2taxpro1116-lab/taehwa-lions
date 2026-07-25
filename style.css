@@ -322,7 +322,7 @@ table.members td.role-cell { line-height: 1.35; color: var(--gray-600); }
   border-radius: 999px;
   white-space: nowrap;
 }
-.pay-o { background: #e3f2e8; color: #1b7a3d; }
+.pay-o { background: #1b9e4b; color: #fff; box-shadow: 0 1px 4px rgba(27, 158, 75, 0.35); }
 .pay-x { background: var(--gray-100); color: var(--gray-400); }
 table.members td.empty { text-align: center; color: var(--gray-400); padding: 40px 16px; white-space: normal; }
 .table-note { text-align: center; color: var(--gray-600); font-size: 17px; margin-bottom: 16px; white-space: pre-line; }
