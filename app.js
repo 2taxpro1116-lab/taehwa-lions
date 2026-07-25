@@ -43,7 +43,10 @@ function renderSchedule() {
   const soonLimit = new Date(today);
   soonLimit.setDate(soonLimit.getDate() + 14); // 14일 이내 = 곧 다가옴
 
-  const months = SITE_DATA.schedule || [];
+  // 최신 월이 위로 오도록 정렬(연·월 내림차순)
+  const months = [...(SITE_DATA.schedule || [])].sort(
+    (a, b) => (b.year - a.year) || (b.month - a.month)
+  );
   if (months.length === 0) {
     wrap.appendChild(el("p", null, "등록된 일정이 없습니다."));
     return;
