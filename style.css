@@ -539,10 +539,12 @@ body.locked { overflow: hidden; }
   table.members th, table.members td {
     white-space: normal;
     word-break: keep-all;
-    padding: 10px 8px;
+    padding: 9px 6px;
     font-size: 15px;
   }
-  table.members td a[href^="tel:"] { white-space: nowrap; }
+  /* 연락처는 좁게: 글자 축소 */
+  table.members td a[href^="tel:"] { white-space: nowrap; font-size: 13px; }
+  .pay-o, .pay-x { font-size: 12px; padding: 3px 8px; }
 
   /* 일정표: 행사명 줄바꿈 허용, 가로 스크롤 제거, 글자 축소 */
   .acc-body { overflow-x: visible; padding: 12px; }
