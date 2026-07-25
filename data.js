@@ -89,13 +89,25 @@ const SITE_DATA = {
     {
       year: 2026,
       month: 7,
-      open: true,           // 7월은 처음부터 펼쳐서 보이기
+      open: false,
       items: [
         { day: 5,  title: "산악회\n발대식" },
         { day: 8,  title: "골프회\n정기라운딩" },
         { day: 11, title: "보은라이온스클럽\n이·취임식" },
         { day: 14, title: "본회 이사회" },
         { day: 24, title: "본회 월례회 및 정기총회,\n도산급식 봉사활동" },
+      ],
+    },
+    {
+      year: 2026,
+      month: 8,
+      open: true,           // 8월은 처음부터 펼쳐서 보이기
+      items: [
+        { day: 12, title: "골프회\n정기라운딩" },
+        { day: 14, title: "이사회" },
+        { day: 15, title: "부부합동월례회" },
+        { day: 24, title: "월례회" },
+        { day: 28, title: "도산급식 봉사활동" },
       ],
     },
   ],
