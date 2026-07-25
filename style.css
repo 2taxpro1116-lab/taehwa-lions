@@ -314,6 +314,16 @@ table.members tbody tr { border-top: 1px solid var(--gray-100); }
 table.members tbody tr:nth-child(even) { background: var(--gray-50); }
 table.members td a { color: var(--blue); text-decoration: none; font-weight: 600; }
 table.members td.role-cell { line-height: 1.35; color: var(--gray-600); }
+.pay-o, .pay-x {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 3px 11px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.pay-o { background: #e3f2e8; color: #1b7a3d; }
+.pay-x { background: var(--gray-100); color: var(--gray-400); }
 table.members td.empty { text-align: center; color: var(--gray-400); padding: 40px 16px; white-space: normal; }
 .table-note { text-align: center; color: var(--gray-600); font-size: 17px; margin-bottom: 16px; white-space: pre-line; }
 .table-note:empty { display: none; }

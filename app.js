@@ -105,6 +105,15 @@ function renderMembers() {
     tr.appendChild(el("td", null, `<b>${m.name}</b>`));
     tr.appendChild(el("td", "role-cell", (m.role || "").replace(/\n/g, "<br>")));
     tr.appendChild(el("td", null, m.phone ? `<a href="tel:${m.phone}">${m.phone}</a>` : ""));
+    tr.appendChild(
+      el(
+        "td",
+        null,
+        m.paid
+          ? '<span class="pay-o">납부</span>'
+          : '<span class="pay-x">미납</span>'
+      )
+    );
     tbody.appendChild(tr);
   });
   $("#member-count").textContent = `총 ${SITE_DATA.members.length}명`;
