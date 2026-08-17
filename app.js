@@ -204,43 +204,173 @@ function closeLightbox() {
   document.body.classList.remove("locked");
 }
 
-/* ---------- 찬조/운영 현황 (범용 표) ---------- */
-function renderDataTable(cfg, tableId, noteId) {
-  const table = $(tableId);
-  if (!table || !cfg) return;
+/* 금액 포맷 */
+function won(n) {
+  if (n === null || n === undefined || n === "") return "";
+  return Number(n).toLocaleString("ko-KR");
+}
+function wonZero(n) {
+  if (!n) return "-";
+  return Number(n).toLocaleString("ko-KR");
+}
 
-  const note = $(noteId);
-  if (note) note.textContent = cfg.note || "";
+/* ---------- 찬조현황 (회원별 누적) ---------- */
+function renderDonations() {
+  const wrap = $("#donations-content");
+  const d = SITE_DATA.donations;
+  if (!wrap || !d) return;
 
-  const cols = cfg.columns || [];
-  const rows = cfg.rows || [];
+  let html = "";
+  html += `<div class="fin-caption">${d.title || ""}${
+    d.round ? ` <span class="fin-round">(${d.round})</span>` : ""
+  }</div>`;
 
-  const thead = el("thead");
-  const htr = el("tr");
-  cols.forEach((c) => htr.appendChild(el("th", null, c)));
-  thead.appendChild(htr);
+  html += '<div class="member-table-wrap"><table class="members fin-table">';
+  html +=
+    "<thead>" +
+    '<tr><th rowspan="2">순번</th><th rowspan="2">회원명</th><th rowspan="2">직책</th>' +
+    '<th rowspan="2">자진<br>봉사금</th><th rowspan="2">발전기금</th>' +
+    '<th colspan="4">써클활동비</th><th rowspan="2">합계</th></tr>' +
+    "<tr><th>골프회</th><th>산악회</th><th>급식봉사</th><th>소계</th></tr>" +
+    "</thead><tbody>";
 
-  const tbody = el("tbody");
-  if (rows.length === 0) {
-    const tr = el("tr");
-    const td = el("td", "empty", "아직 등록된 내용이 없습니다.");
-    td.setAttribute("colspan", cols.length || 1);
-    tr.appendChild(td);
-    tbody.appendChild(tr);
-  } else {
-    rows.forEach((r) => {
-      const tr = el("tr");
-      cols.forEach((_, i) => {
-        const v = r[i];
-        tr.appendChild(el("td", null, v == null ? "" : String(v).replace(/\n/g, "<br>")));
-      });
-      tbody.appendChild(tr);
-    });
+  const rowHtml = (m) =>
+    `<tr>
+       <td>${m.no ?? ""}</td>
+       <td class="fin-name">${(m.name || "").replace(/\n/g, "<br>")}</td>
+       <td class="role-cell">${(m.role || "").replace(/\n/g, "<br>")}</td>
+       <td class="num">${wonZero(m.jajin)}</td>
+       <td class="num">${wonZero(m.fund)}</td>
+       <td class="num">${wonZero(m.golf)}</td>
+       <td class="num">${wonZero(m.san)}</td>
+       <td class="num">${wonZero(m.meal)}</td>
+       <td class="num">${wonZero(m.sub)}</td>
+       <td class="num fin-total">${wonZero(m.total)}</td>
+     </tr>`;
+
+  (d.members || []).forEach((m) => (html += rowHtml(m)));
+
+  if (d.extra && d.extra.length) {
+    html += `<tr class="fin-sep"><td colspan="10">※ 명부 외 (전표상 이름)</td></tr>`;
+    d.extra.forEach((m) => (html += rowHtml(m)));
   }
 
-  table.innerHTML = "";
-  table.appendChild(thead);
-  table.appendChild(tbody);
+  html += "</tbody>";
+  if (d.totals) {
+    const t = d.totals;
+    html += `<tfoot><tr class="fin-grand">
+      <td colspan="3">합 계</td>
+      <td class="num">${won(t.jajin)}</td>
+      <td class="num">${won(t.fund)}</td>
+      <td class="num">${won(t.golf)}</td>
+      <td class="num">${won(t.san)}</td>
+      <td class="num">${won(t.meal)}</td>
+      <td class="num">${won(t.sub)}</td>
+      <td class="num">${won(t.total)}</td>
+    </tr></tfoot>`;
+  }
+  html += "</table></div>";
+  html += '<p class="fin-hint">표가 넓으면 좌우로 밀어서 보실 수 있습니다.</p>';
+
+  wrap.innerHTML = html;
+}
+
+/* ---------- 운영현황 (수지계산서 + 계정별원장) ---------- */
+function renderOperations() {
+  const wrap = $("#operations-content");
+  const o = SITE_DATA.operations;
+  if (!wrap || !o) return;
+
+  let html = "";
+  const s = o.statement;
+
+  /* === 1) 수지계산서 === */
+  if (s) {
+    html += `<div class="accordion open"><button class="acc-header">
+        <span class="acc-title">${s.title}</span><span class="acc-arrow">▾</span></button>
+      <div class="acc-body">`;
+    html += `<div class="stmt-head">${s.org || ""}<br><span>${s.period || ""}</span></div>`;
+
+    html += '<div class="member-table-wrap"><table class="members stmt-table"><thead><tr>' +
+      "<th>수입 과목</th><th>금액</th><th>지출 과목</th><th>금액</th></tr></thead><tbody>";
+    const inc = s.incomes || [], exp = s.expenses || [];
+    const n = Math.max(inc.length, exp.length);
+    for (let i = 0; i < n; i++) {
+      const a = inc[i], b = exp[i];
+      html += `<tr>
+        <td>${a ? a.name : ""}</td><td class="num">${a ? won(a.amount) : ""}</td>
+        <td>${b ? b.name : ""}</td><td class="num">${b ? won(b.amount) : ""}</td>
+      </tr>`;
+    }
+    html += `<tr class="stmt-sub"><td>소계</td><td class="num">${won(s.subIn)}</td><td>소계</td><td class="num">${won(s.subOut)}</td></tr>`;
+    html += `<tr><td>자진봉사금</td><td class="num">${won(s.jajinIn)}</td><td>자진봉사금</td><td class="num">${won(s.jajinOut)}</td></tr>`;
+    html += `<tr><td>써클활동비</td><td class="num">${won(s.circleIn)}</td><td>써클활동비</td><td class="num">${won(s.circleOut)}</td></tr>`;
+    html += `<tr class="stmt-sub"><td>수입합계</td><td class="num">${won(s.totIn)}</td><td>지출합계</td><td class="num">${won(s.totOut)}</td></tr>`;
+    html += "</tbody></table></div>";
+
+    html += `<div class="stmt-summary">
+      <div><span>금월 잔액</span><b>${won(s.balance)}원</b></div>
+      <div><span>정기예탁금</span><b>${won(s.deposit)}원</b></div>
+      <div class="hl"><span>자산 총액</span><b>${won(s.assets)}원</b></div>
+    </div>`;
+    html += "</div></div>";
+  }
+
+  /* === 2) 계정별원장 === */
+  const ledger = o.ledger || [];
+  html += `<div class="accordion"><button class="acc-header">
+      <span class="acc-title">제${o.round}차 계정별 원장</span>
+      <span class="acc-count">${ledger.length}개 계정</span>
+      <span class="acc-arrow">▾</span></button><div class="acc-body">`;
+
+  ledger.forEach((g) => {
+    html += `<div class="ledger-group"><div class="ledger-title">${g.title}</div>`;
+    html += '<div class="member-table-wrap"><table class="members ledger-table"><thead><tr>' +
+      "<th>일자</th><th>내역</th><th>회원명</th><th>수입</th><th>지출</th><th>적요</th></tr></thead><tbody>";
+    (g.rows || []).forEach((r) => {
+      if (r.sub) {
+        html += `<tr class="ledger-subsum"><td colspan="3">${r.label}</td><td class="num">${won(r.in)}</td><td class="num">${won(r.out)}</td><td></td></tr>`;
+      } else {
+        html += `<tr>
+          <td class="nowrap">${r.date || ""}</td>
+          <td>${r.desc || ""}</td>
+          <td class="nowrap">${r.member || ""}</td>
+          <td class="num">${won(r.in)}</td>
+          <td class="num">${won(r.out)}</td>
+          <td class="ledger-note">${r.note || ""}</td>
+        </tr>`;
+      }
+    });
+    html += `<tr class="ledger-sum"><td colspan="3">소계</td><td class="num">${won(g.subIn)}</td><td class="num">${won(g.subOut)}</td><td></td></tr>`;
+    html += "</tbody></table></div></div>";
+  });
+
+  /* 참석인원 집계 */
+  const att = o.attendance || [];
+  if (att.length) {
+    html += '<div class="ledger-group"><div class="ledger-title">◆ 참석인원 집계 (써클활동비 = 인원 × 1인당 단가)</div>';
+    html += '<div class="member-table-wrap"><table class="members ledger-table"><thead><tr>' +
+      "<th>구분</th><th>1인당 단가</th><th>금액</th><th>인원</th><th>참석자</th></tr></thead><tbody>";
+    att.forEach((a) => {
+      const isTotal = String(a.group).replace(/\s/g, "") === "합계";
+      html += `<tr class="${isTotal ? "ledger-sum" : ""}">
+        <td class="nowrap">${a.group}</td>
+        <td class="num">${won(a.unit)}</td>
+        <td class="num">${won(a.amount)}</td>
+        <td class="num">${a.count ?? ""}${isTotal ? "" : "명"}</td>
+        <td class="ledger-note">${a.note || ""}</td>
+      </tr>`;
+    });
+    html += "</tbody></table></div></div>";
+  }
+  html += "</div></div>";
+
+  wrap.innerHTML = html;
+
+  // 아코디언 토글
+  wrap.querySelectorAll(".acc-header").forEach((h) =>
+    h.addEventListener("click", () => h.parentElement.classList.toggle("open"))
+  );
 }
 
 /* ---------- 회비 납부안내 ---------- */
@@ -374,8 +504,8 @@ function init() {
   renderClub();
   renderSchedule();
   renderActivities();
-  renderDataTable(SITE_DATA.donations, "#donations-table", "#donations-note");
-  renderDataTable(SITE_DATA.operations, "#operations-table", "#operations-note");
+  renderDonations();
+  renderOperations();
   renderMembers();
   renderFee();
   renderBylaws();

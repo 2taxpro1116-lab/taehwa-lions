@@ -396,6 +396,41 @@ footer a { color: #cfd6e0; }
 #lightbox.open { display: flex; animation: fade 0.2s ease; }
 #lightbox img { max-width: 96%; max-height: 92%; object-fit: contain; border-radius: 8px; }
 
+/* ---------- 찬조·운영 현황 (재무) ---------- */
+.fin-caption { font-size: 20px; font-weight: 800; color: var(--gray-800); margin-bottom: 14px; text-align: center; }
+.fin-round { color: var(--blue); font-size: 16px; }
+.fin-hint { text-align: center; color: var(--gray-400); font-size: 14px; margin-top: 10px; }
+
+table.members.fin-table th { font-size: 14px; padding: 8px 10px; text-align: center; }
+table.members.fin-table td { font-size: 15px; padding: 9px 10px; }
+table.members td.num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+table.members td.fin-name { font-weight: 700; white-space: nowrap; }
+table.members td.fin-total { font-weight: 800; color: var(--blue); }
+.fin-table tbody tr.fin-sep td { background: var(--gray-100); color: var(--gray-600); font-weight: 700; font-size: 13px; }
+.fin-table tfoot .fin-grand td { background: var(--blue); color: #fff; font-weight: 800; }
+.fin-table tfoot .fin-grand td.num { color: #fff; }
+
+/* 수지계산서 */
+.stmt-head { text-align: center; color: var(--gray-600); margin-bottom: 14px; line-height: 1.5; }
+.stmt-head span { font-size: 15px; }
+table.members.stmt-table th { text-align: center; background: var(--blue); }
+table.members.stmt-table td { font-size: 15px; padding: 9px 12px; }
+.stmt-table tr.stmt-sub td { background: var(--gray-100); font-weight: 800; }
+.stmt-summary { margin-top: 16px; display: flex; flex-direction: column; gap: 8px; max-width: 420px; margin-left: auto; }
+.stmt-summary div { display: flex; justify-content: space-between; padding: 10px 16px; background: var(--gray-50); border-radius: 10px; font-size: 16px; }
+.stmt-summary div.hl { background: var(--blue); color: #fff; font-size: 18px; }
+.stmt-summary b { font-variant-numeric: tabular-nums; }
+
+/* 계정별원장 */
+.ledger-group { margin-bottom: 24px; }
+.ledger-title { font-weight: 800; color: var(--blue); font-size: 17px; margin-bottom: 8px; }
+table.members.ledger-table th { font-size: 13px; padding: 7px 8px; text-align: center; }
+table.members.ledger-table td { font-size: 14px; padding: 7px 9px; }
+table.members td.nowrap { white-space: nowrap; }
+.ledger-note { color: var(--gray-600); font-size: 13px; }
+.ledger-table tr.ledger-subsum td { background: #eef4ff; color: var(--gray-600); font-weight: 700; }
+.ledger-table tr.ledger-sum td { background: var(--gray-100); font-weight: 800; }
+
 /* ---------- 회비 납부안내 ---------- */
 .fee-greeting { text-align: center; font-size: 19px; line-height: 1.6; margin-bottom: 26px; }
 .fee-table { width: 100%; }
