@@ -581,6 +581,23 @@ body.locked { overflow: hidden; }
   table.members td a[href^="tel:"] { white-space: nowrap; font-size: 13px; }
   .pay-o, .pay-x { font-size: 12px; padding: 3px 8px; }
 
+  /* 재무 표(찬조·운영): 모바일에서 최대한 촘촘하게 */
+  table.members.fin-table th, table.members.fin-table td,
+  table.members.ledger-table th, table.members.ledger-table td,
+  table.members.stmt-table th, table.members.stmt-table td {
+    font-size: 11px;
+    padding: 3px 4px;
+    word-break: keep-all;
+  }
+  table.members.fin-table td.num,
+  table.members.ledger-table td.num,
+  table.members.stmt-table td.num { font-size: 11px; }
+  .fin-caption { font-size: 16px; }
+  .ledger-title { font-size: 14px; }
+  .stmt-summary div { font-size: 14px; padding: 8px 12px; }
+  .stmt-summary div.hl { font-size: 15px; }
+  .fin-hint { font-size: 12px; }
+
   /* 일정표: 행사명 줄바꿈 허용, 가로 스크롤 제거, 글자 축소 */
   .acc-body { overflow-x: visible; padding: 12px; }
   .acc-header { padding: 16px 18px; }

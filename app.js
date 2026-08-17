@@ -228,17 +228,16 @@ function renderDonations() {
   html += '<div class="member-table-wrap"><table class="members fin-table">';
   html +=
     "<thead>" +
-    '<tr><th rowspan="2">순번</th><th rowspan="2">회원명</th><th rowspan="2">직책</th>' +
-    '<th rowspan="2">자진<br>봉사금</th><th rowspan="2">발전기금</th>' +
+    '<tr><th rowspan="2">순번</th><th rowspan="2">회원명</th>' +
+    '<th rowspan="2">자진<br>봉사금</th><th rowspan="2">발전<br>기금</th>' +
     '<th colspan="4">써클활동비</th><th rowspan="2">합계</th></tr>' +
-    "<tr><th>골프회</th><th>산악회</th><th>급식봉사</th><th>소계</th></tr>" +
+    "<tr><th>골프회</th><th>산악회</th><th>급식<br>봉사</th><th>소계</th></tr>" +
     "</thead><tbody>";
 
-  const rowHtml = (m) =>
+  const rowHtml = (m, addL) =>
     `<tr>
        <td>${m.no ?? ""}</td>
-       <td class="fin-name">${(m.name || "").replace(/\n/g, "<br>")}</td>
-       <td class="role-cell">${(m.role || "").replace(/\n/g, "<br>")}</td>
+       <td class="fin-name">${(m.name || "").replace(/\n/g, "")}${addL ? "L" : ""}</td>
        <td class="num">${wonZero(m.jajin)}</td>
        <td class="num">${wonZero(m.fund)}</td>
        <td class="num">${wonZero(m.golf)}</td>
@@ -248,18 +247,18 @@ function renderDonations() {
        <td class="num fin-total">${wonZero(m.total)}</td>
      </tr>`;
 
-  (d.members || []).forEach((m) => (html += rowHtml(m)));
+  (d.members || []).forEach((m) => (html += rowHtml(m, true)));
 
   if (d.extra && d.extra.length) {
-    html += `<tr class="fin-sep"><td colspan="10">※ 명부 외 (전표상 이름)</td></tr>`;
-    d.extra.forEach((m) => (html += rowHtml(m)));
+    html += `<tr class="fin-sep"><td colspan="9">※ 명부 외 (전표상 이름)</td></tr>`;
+    d.extra.forEach((m) => (html += rowHtml(m, false)));
   }
 
   html += "</tbody>";
   if (d.totals) {
     const t = d.totals;
     html += `<tfoot><tr class="fin-grand">
-      <td colspan="3">합 계</td>
+      <td colspan="2">합 계</td>
       <td class="num">${won(t.jajin)}</td>
       <td class="num">${won(t.fund)}</td>
       <td class="num">${won(t.golf)}</td>
