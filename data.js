@@ -122,8 +122,80 @@ const SITE_DATA = {
   activities: [
     {
       year: 2026,
-      month: 7,
+      month: 8,
       open: true,
+      posts: [
+        {
+          title: "부부 합동 연수회 및 8월 월례회",
+          date: "8월 15일",
+          body: `지난 8월 15일, 태화라이온스클럽 부부 합동 연수회 및 8월 월례회가 해운대 일원에서 열렸습니다.
+
+이날은 회원과 배우자분들이 함께한 뜻깊은 자리로, 아쿠아리움 관람과 해운대 요트 투어를 즐기며 잊지 못할 추억을 만들었습니다. 시원한 바닷바람을 맞으며 떠난 요트 투어에서는 회원 가족 모두가 환한 웃음 속에서 하나 되는 시간을 보냈습니다.
+
+일상을 벗어나 함께 화합을 다진 이번 연수회를 통해 회원 간의 정과 유대가 한층 깊어졌습니다. 늘 클럽을 응원해 주시는 배우자분들께도 감사의 마음을 전합니다.
+
+앞으로도 태화라이온스클럽은 화합과 봉사의 정신으로 힘차게 나아가겠습니다. 함께해 주신 회원과 가족 여러분, 감사합니다.
+
+— 세상을 바꾸는 봉사, Serve to Change —
+
+2026–2027 태화라이온스클럽
+회장 최연식 L 드림`,
+          photos: [
+            "photos/2026-08-training-1.jpg",
+            "photos/2026-08-training-2.jpg",
+            "photos/2026-08-training-3.jpg",
+            "photos/2026-08-training-4.jpg",
+            "photos/2026-08-training-5.jpg",
+            "photos/2026-08-training-6.jpg",
+            "photos/2026-08-training-7.jpg",
+            "photos/2026-08-training-8.jpg",
+            "photos/2026-08-training-9.jpg",
+            "photos/2026-08-training-10.jpg",
+            "photos/2026-08-training-11.jpg",
+            "photos/2026-08-training-12.jpg",
+            "photos/2026-08-training-13.jpg",
+            "photos/2026-08-training-14.jpg",
+            "photos/2026-08-training-15.jpg",
+            "photos/2026-08-training-16.jpg",
+            "photos/2026-08-training-17.jpg",
+            "photos/2026-08-training-18.jpg",
+            "photos/2026-08-training-19.jpg",
+            "photos/2026-08-training-20.jpg",
+            "photos/2026-08-training-21.jpg",
+            "photos/2026-08-training-22.jpg",
+            "photos/2026-08-training-23.jpg",
+            "photos/2026-08-training-24.jpg",
+            "photos/2026-08-training-25.jpg",
+            "photos/2026-08-training-26.jpg",
+            "photos/2026-08-training-27.jpg",
+            "photos/2026-08-training-28.jpg",
+            "photos/2026-08-training-29.jpg",
+          ],
+        },
+        {
+          title: "태화라이온스클럽 8월 이사회 개최",
+          date: "8월 14일",
+          body: `지난 8월 14일, 선바위한우갈비에서 태화라이온스클럽 8월 이사회가 진행되었습니다.
+
+참석하신 이사진께서 클럽 운영과 봉사 사업에 관한 여러 안건을 함께 논의하며 뜻깊은 시간을 보냈습니다. 화기애애한 분위기 속에서 알찬 회의를 마무리하였습니다.
+
+바쁜 일정에도 참석해 주신 이사진 여러분께 감사드립니다.
+
+— 세상을 바꾸는 봉사, Serve to Change —
+
+2026–2027 태화라이온스클럽
+회장 최연식 L 드림`,
+          photos: [
+            "photos/2026-08-board-1.jpg",
+            "photos/2026-08-board-2.jpg",
+          ],
+        },
+      ],
+    },
+    {
+      year: 2026,
+      month: 7,
+      open: false,
       posts: [
         {
           title: "2025–26 · 2026–27 회기 인수인계 완료",
