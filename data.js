@@ -510,8 +510,8 @@ const SITE_DATA = {
     { no: 3, name: "이재환", jajin: 1850000, fund: 100000, golf: 500000, san: 400000, meal: 200000, sub: 1100000, total: 3050000 },
     { no: 4, name: "박정기", jajin: 1150000, fund: 100000, golf: 250000, san: 200000, meal: 0, sub: 450000, total: 1700000 },
     { no: 5, name: "이주형", jajin: 800000, fund: 100000, golf: 500000, san: 400000, meal: 100000, sub: 1000000, total: 1900000 },
-    { no: 6, name: "장태원", jajin: 330000, fund: 0, golf: 250000, san: 200000, meal: 200000, sub: 650000, total: 980000 },
-    { no: 7, name: "이재원", jajin: 0, fund: 0, golf: 250000, san: 0, meal: 0, sub: 250000, total: 250000 },
+    { no: 6, name: "장태원", jajin: 455000, fund: 0, golf: 250000, san: 200000, meal: 200000, sub: 650000, total: 1105000 },
+    { no: 7, name: "이재원", jajin: 125000, fund: 0, golf: 250000, san: 0, meal: 0, sub: 250000, total: 375000 },
     { no: 8, name: "이상봉", jajin: 100000, fund: 0, golf: 0, san: 0, meal: 0, sub: 0, total: 100000 },
     { no: 9, name: "박정현", jajin: 0, fund: 0, golf: 0, san: 0, meal: 0, sub: 0, total: 0 },
     { no: 10, name: "이병관", jajin: 0, fund: 0, golf: 0, san: 0, meal: 0, sub: 0, total: 0 },
@@ -552,7 +552,7 @@ const SITE_DATA = {
     { no: 43, name: "1지역3지대위원장김효은", jajin: 0, fund: 100000, golf: 0, san: 0, meal: 0, sub: 0, total: 100000 },
     { no: 44, name: "1지역회장단일동", jajin: 0, fund: 200000, golf: 0, san: 0, meal: 0, sub: 0, total: 200000 },
     ],
-    totals: { jajin: 14530000, fund: 2000008, golf: 5500000, san: 7000000, meal: 2200000, sub: 14700000, total: 31230008 },
+    totals: { jajin: 14780000, fund: 2000008, golf: 5500000, san: 7000000, meal: 2200000, sub: 14700000, total: 31480008 },
   },
 
   /* -----------------------------------------------------------------------
@@ -584,8 +584,8 @@ const SITE_DATA = {
           { name: "경조사비", amount: 420000 },
         ],
         subIn: 13006088, subOut: 5569550, monthTotal: 7436538,
-        jajinIn: 500000, jajinOut: 500000, circleIn: 900000, circleOut: 900000,
-        totIn: 14406088, totOut: 6969550, balance: 7436538, deposit: 45000000, assets: 52436538,
+        jajinIn: 750000, jajinOut: 750000, circleIn: 900000, circleOut: 900000,
+        totIn: 14656088, totOut: 7219550, balance: 7436538, deposit: 45000000, assets: 52436538,
       },
       ledger: [
         {
@@ -625,9 +625,12 @@ const SITE_DATA = {
         },
         {
           title: "[수입] 자진봉사금",
-          subIn: 500000, subOut: null,
+          subIn: 750000, subOut: null,
           rows: [
             { date: "08-15", desc: "부부합동 연수회 및 월례회", member: "엄재일L", in: 200000, out: null, note: "3차 식대" },
+            { date: "08-28", desc: "부부합동 연수회 및 월례회", member: "장태원L", in: 125000, out: null, note: "답례품(5,000원*50개)" },
+            { date: "08-28", desc: "부부합동 연수회 및 월례회", member: "이재원L", in: 125000, out: null, note: "답례품(5,000원*50개)" },
+            { sub: true, label: "└ 부부합동 연수회 및 월례회 소계 (3건)", in: 450000, out: null },
             { date: "08-23", desc: "김성호L 돌잔치", member: "최연식L", in: 300000, out: null, note: "2차 식대" },
           ],
         },
@@ -636,14 +639,13 @@ const SITE_DATA = {
           subIn: null, subOut: 4769330,
           rows: [
             { date: "08-15", desc: "부부합동 연수회 및 월례회", member: "", in: null, out: 800000, note: "요트렌탈비" },
-            { date: "08-15", desc: "부부합동 연수회 및 월례회", member: "", in: null, out: 800000, note: "버스렌탈비 잔금, 기사팁" },
-            { date: "08-15", desc: "부부합동 연수회 및 월례회", member: "", in: null, out: 1146000, note: "저녁식대" },
+            { date: "08-15", desc: "부부합동 연수회 및 월례회", member: "", in: null, out: 900000, note: "버스렌탈비 잔금, 기사팁" },
+            { date: "08-15", desc: "부부합동 연수회 및 월례회", member: "", in: null, out: 1196000, note: "저녁식대" },
             { date: "08-15", desc: "부부합동 연수회 및 월례회", member: "", in: null, out: 500000, note: "모바일 상품권" },
             { date: "08-15", desc: "부부합동 연수회 및 월례회", member: "", in: null, out: 824000, note: "아쿠아리움 입장권" },
-            { date: "08-15", desc: "부부합동 연수회 및 월례회", member: "", in: null, out: 369930, note: "간식비, 주류등" },
+            { date: "08-15", desc: "부부합동 연수회 및 월례회", member: "", in: null, out: 469930, note: "간식비, 주류등" },
             { date: "08-15", desc: "부부합동 연수회 및 월례회", member: "", in: null, out: 40000, note: "현수막 제작비용" },
-            { date: "08-28", desc: "부부합동 연수회 및 월례회", member: "", in: null, out: 250000, note: "답례품(5,000원*50개)" },
-            { sub: true, label: "└ 부부합동 연수회 및 월례회 소계 (8건)", in: null, out: 4729930 },
+            { sub: true, label: "└ 부부합동 연수회 및 월례회 소계 (7건)", in: null, out: 4729930 },
             { date: "08-28", desc: "도산급식봉사", member: "", in: null, out: 39400, note: "커피값" },
           ],
         },
