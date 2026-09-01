@@ -101,12 +101,24 @@ const SITE_DATA = {
     {
       year: 2026,
       month: 8,
-      open: true,           // 8월은 처음부터 펼쳐서 보이기
+      open: false,
       items: [
         { day: 12, title: "골프회\n정기라운딩" },
         { day: 14, title: "이사회" },
-        { day: 15, title: "부부합동월례회" },
+        { day: 15, title: "부부합동 연수회\n및 월례회" },
         { day: 28, title: "도산급식 봉사활동" },
+      ],
+    },
+    {
+      year: 2026,
+      month: 9,
+      open: true,           // 9월은 처음부터 펼쳐서 보이기
+      items: [
+        { day: 9,  title: "골프회\n정기라운딩" },
+        { day: 11, title: "1부회장 및\n신입회원 연수회" },
+        { day: 14, title: "이사회" },
+        { day: null, title: "월례회" },              // 날짜 미정
+        { day: null, title: "도산급식 봉사활동" },   // 날짜 미정
       ],
     },
   ],

@@ -66,20 +66,28 @@ function renderSchedule() {
 
     // 내용
     const body = el("div", "acc-body");
-    const sorted = [...m.items].sort((a, b) => a.day - b.day);
+    // 날짜 미정(day 없음)은 맨 아래로
+    const sorted = [...m.items].sort(
+      (a, b) => (Number(a.day) || 99) - (Number(b.day) || 99)
+    );
 
     sorted.forEach((it) => {
-      const d = new Date(m.year, m.month - 1, it.day);
-      d.setHours(0, 0, 0, 0);
-      const isPast = d < today;
-      const isToday = d.getTime() === today.getTime();
-      const isSoon = !isPast && !isToday && d <= soonLimit;
+      const hasDay = Number.isFinite(Number(it.day)) && it.day;
+      const d = hasDay ? new Date(m.year, m.month - 1, Number(it.day)) : null;
+      if (d) d.setHours(0, 0, 0, 0);
+      const isPast = d ? d < today : false;
+      const isToday = d ? d.getTime() === today.getTime() : false;
+      const isSoon = d ? !isPast && !isToday && d <= soonLimit : false;
 
       const row = el("div", "event" + (isPast ? " past" : ""));
 
-      const dateBox = el("div", "date-box");
-      dateBox.appendChild(el("div", "day", it.day));
-      dateBox.appendChild(el("div", "weekday", WEEKDAYS[d.getDay()] + "요일"));
+      const dateBox = el("div", "date-box" + (hasDay ? "" : " tbd"));
+      if (hasDay) {
+        dateBox.appendChild(el("div", "day", it.day));
+        dateBox.appendChild(el("div", "weekday", WEEKDAYS[d.getDay()] + "요일"));
+      } else {
+        dateBox.appendChild(el("div", "tbd-label", "날짜<br>미정"));
+      }
       row.appendChild(dateBox);
 
       const info = el("div", "info");

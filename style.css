@@ -239,6 +239,14 @@ section.block {
   padding: 10px 14px;
   min-width: 62px;
 }
+.event .date-box.tbd { display: grid; place-items: center; }
+.event .date-box .tbd-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gray-400);
+  line-height: 1.25;
+  text-align: center;
+}
 .event .date-box .month { font-size: 16px; color: var(--blue); font-weight: 700; }
 .event .date-box .day { font-size: 27px; font-weight: 900; line-height: 1; }
 .event .date-box .weekday { font-size: 14px; color: var(--gray-400); }
