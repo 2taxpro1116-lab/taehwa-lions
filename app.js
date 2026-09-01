@@ -274,19 +274,41 @@ function renderDonations() {
   wrap.innerHTML = html;
 }
 
-/* ---------- 운영현황 (수지계산서 + 계정별원장) ---------- */
+/* ---------- 운영현황 (회차별 수지계산서 + 계정별원장) ---------- */
 function renderOperations() {
   const wrap = $("#operations-content");
   const o = SITE_DATA.operations;
   if (!wrap || !o) return;
 
+  // 회차 최신순 (구버전 단일 회차 구조도 지원)
+  const rounds = o.rounds
+    ? [...o.rounds].sort((a, b) => b.round - a.round)
+    : [{ round: o.round, statement: o.statement, ledger: o.ledger, attendance: o.attendance }];
+
+  let html = "";
+  rounds.forEach((R, ri) => {
+    html += renderOneRound(R, ri === 0);
+  });
+
+  wrap.innerHTML = html;
+
+  // 아코디언 토글
+  wrap.querySelectorAll(".acc-header").forEach((h) =>
+    h.addEventListener("click", () => h.parentElement.classList.toggle("open"))
+  );
+}
+
+/* 한 회차(수지계산서 + 계정별원장) HTML */
+function renderOneRound(o, isLatest) {
   let html = "";
   const s = o.statement;
 
   /* === 1) 수지계산서 === */
   if (s) {
-    html += `<div class="accordion open"><button class="acc-header">
-        <span class="acc-title">${s.title}</span><span class="acc-arrow">▾</span></button>
+    html += `<div class="accordion${isLatest ? " open" : ""}"><button class="acc-header">
+        <span class="acc-title">${s.title}</span>
+        ${isLatest ? '<span class="acc-count">최신</span>' : ""}
+        <span class="acc-arrow">▾</span></button>
       <div class="acc-body">`;
     html += `<div class="stmt-head">${s.org || ""}<br><span>${s.period || ""}</span></div>`;
 
@@ -364,12 +386,7 @@ function renderOperations() {
   }
   html += "</div></div>";
 
-  wrap.innerHTML = html;
-
-  // 아코디언 토글
-  wrap.querySelectorAll(".acc-header").forEach((h) =>
-    h.addEventListener("click", () => h.parentElement.classList.toggle("open"))
-  );
+  return html;
 }
 
 /* ---------- 회비 납부안내 ---------- */
