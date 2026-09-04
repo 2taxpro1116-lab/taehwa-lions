@@ -118,7 +118,6 @@ const SITE_DATA = {
         { day: 11, title: "1부회장 및\n신입회원 연수회" },
         { day: 14, title: "이사회" },
         { day: null, title: "월례회" },              // 날짜 미정
-        { day: null, title: "도산급식 봉사활동" },   // 날짜 미정
       ],
     },
   ],
