@@ -404,6 +404,47 @@ footer a { color: #cfd6e0; }
 #lightbox.open { display: flex; animation: fade 0.2s ease; }
 #lightbox img { max-width: 96%; max-height: 92%; object-fit: contain; border-radius: 8px; }
 
+/* ---------- 회원명부 하위 탭 ---------- */
+.subtabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+.subtab {
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 11px 24px;
+  border-radius: 999px;
+  border: 2px solid var(--gray-200);
+  background: #fff;
+  color: var(--gray-600);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.subtab:hover { border-color: var(--blue); color: var(--blue); }
+.subtab.active {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #fff;
+  box-shadow: var(--shadow-sm);
+}
+.subtab-panel { display: none; }
+.subtab-panel.active { display: block; animation: fade 0.2s ease; }
+
+/* 경조사 내역 표 */
+.cond-asof { text-align: center; color: var(--gray-600); font-size: 15px; margin-bottom: 10px; }
+table.members.cond-table th { text-align: center; font-size: 15px; }
+table.members.cond-table td { font-size: 16px; white-space: normal; word-break: keep-all; }
+table.members.cond-table td.cond-no { text-align: center; color: var(--gray-400); }
+.cond-good { color: #1b7a3d; }
+.cond-bad { color: var(--gray-800); }
+.cond-cnt { text-align: center; font-weight: 800; color: var(--blue); white-space: nowrap; }
+tr.cond-none td { color: var(--gray-400); }
+tr.cond-none td.fin-name { color: var(--gray-600); }
+
 /* ---------- 찬조·운영 현황 (재무) ---------- */
 .fin-caption { font-size: 20px; font-weight: 800; color: var(--gray-800); margin-bottom: 14px; text-align: center; }
 .fin-round { color: var(--blue); font-size: 16px; }
@@ -604,6 +645,11 @@ body.locked { overflow: hidden; }
   table.members.fin-table td.num,
   table.members.ledger-table td.num,
   table.members.stmt-table td.num { font-size: 11px; }
+  /* 회원명부 탭 · 경조사 표 */
+  .subtab { font-size: 15px; padding: 9px 16px; }
+  table.members.cond-table th { font-size: 12px; padding: 6px 4px; }
+  table.members.cond-table td { font-size: 13px; padding: 7px 5px; }
+  .cond-asof { font-size: 13px; }
   .fin-caption { font-size: 16px; }
   .ledger-title { font-size: 14px; }
   .stmt-summary div { font-size: 14px; padding: 8px 12px; }

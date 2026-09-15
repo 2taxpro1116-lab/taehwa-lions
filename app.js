@@ -397,6 +397,50 @@ function renderOneRound(o, isLatest) {
   return html;
 }
 
+/* ---------- 회원 경조사 내역 ---------- */
+function renderCondolences() {
+  const wrap = $("#cond-content");
+  const c = SITE_DATA.condolences;
+  if (!wrap || !c) return;
+
+  const rows = c.rows || [];
+  const counted = rows.filter((r) => r.total).length;
+
+  let html = `<div class="fin-caption">${c.title || ""}</div>`;
+  if (c.asOf) html += `<div class="cond-asof">${c.asOf}</div>`;
+  html += `<div class="member-count">총 ${rows.length}명 · 경조사 기록 ${counted}명</div>`;
+
+  html += '<div class="member-table-wrap"><table class="members cond-table">';
+  html += "<thead><tr><th>순번</th><th>성명</th><th>경사내역</th><th>조사내역</th><th>합계</th></tr></thead><tbody>";
+  rows.forEach((r) => {
+    const empty = !r.good && !r.bad;
+    html += `<tr class="${empty ? "cond-none" : ""}">
+      <td class="cond-no">${r.no}</td>
+      <td class="fin-name">${r.name}</td>
+      <td class="cond-good">${r.good || "-"}</td>
+      <td class="cond-bad">${r.bad || "-"}</td>
+      <td class="cond-cnt">${r.total || "-"}</td>
+    </tr>`;
+  });
+  html += "</tbody></table></div>";
+
+  wrap.innerHTML = html;
+}
+
+/* ---------- 회원명부 탭 전환 ---------- */
+function initSubtabs() {
+  document.querySelectorAll(".subtab").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const target = btn.dataset.tab;
+      document.querySelectorAll(".subtab").forEach((b) => b.classList.remove("active"));
+      document.querySelectorAll(".subtab-panel").forEach((p) => p.classList.remove("active"));
+      btn.classList.add("active");
+      const panel = document.getElementById(target);
+      if (panel) panel.classList.add("active");
+    });
+  });
+}
+
 /* ---------- 회비 납부안내 ---------- */
 function renderFee() {
   const f = SITE_DATA.fee;
@@ -531,6 +575,8 @@ function init() {
   renderDonations();
   renderOperations();
   renderMembers();
+  renderCondolences();
+  initSubtabs();
   renderFee();
   renderBylaws();
 

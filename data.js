@@ -940,6 +940,56 @@ const SITE_DATA = {
   ],
 
   /* -----------------------------------------------------------------------
+     회원 경조사 내역 (누적) — 회원명부 페이지의 탭으로 표시
+     ----------------------------------------------------------------------- */
+  condolences: {
+    title: "태화라이온스클럽 누적 경조사 내역",
+    asOf: "2026. 8. 30일 기준",
+    rows: [
+    { no: 1, name: "김창룡", good: "", bad: "", total: "" },
+    { no: 2, name: "김철홍", good: "", bad: "장인상", total: "" },
+    { no: 3, name: "황순만", good: "본인결혼", bad: "", total: "1회" },
+    { no: 4, name: "원용철", good: "", bad: "", total: "" },
+    { no: 5, name: "이재환", good: "", bad: "", total: "" },
+    { no: 6, name: "이병관", good: "자녀결혼2회", bad: "부친상,모친상", total: "4회" },
+    { no: 7, name: "배기업", good: "자녀결혼2회", bad: "부친상,모친상", total: "4회" },
+    { no: 8, name: "임인득", good: "자녀결혼1회", bad: "부친상,모친상", total: "3회" },
+    { no: 9, name: "한동균", good: "자녀결혼2회", bad: "모친상", total: "3회" },
+    { no: 10, name: "류한용", good: "자녀결혼2회", bad: "모친상", total: "3회" },
+    { no: 11, name: "김철성", good: "조카결혼1회", bad: "", total: "1회" },
+    { no: 12, name: "장기환", good: "", bad: "모친상,장모상", total: "2회" },
+    { no: 13, name: "김태운", good: "자녀결혼1회", bad: "모친상,장모상", total: "3회" },
+    { no: 14, name: "박종언", good: "자녀결혼3회", bad: "장인상", total: "4회" },
+    { no: 15, name: "김호식", good: "자녀결혼1회", bad: "장인상, 모친상, 빙모상", total: "4회" },
+    { no: 16, name: "엄재일", good: "자녀결혼2회", bad: "장인상,장모상", total: "4회" },
+    { no: 17, name: "김춘택", good: "", bad: "모친상", total: "1회" },
+    { no: 18, name: "김명주", good: "자녀결혼2회", bad: "부친상", total: "3회" },
+    { no: 19, name: "허 용", good: "", bad: "", total: "" },
+    { no: 20, name: "최연식", good: "본인결혼", bad: "장인상,모친상", total: "2회" },
+    { no: 21, name: "주성대", good: "", bad: "", total: "" },
+    { no: 22, name: "박정기", good: "", bad: "", total: "" },
+    { no: 23, name: "윤석준", good: "", bad: "장인상", total: "1회" },
+    { no: 24, name: "이양진", good: "", bad: "빙부상", total: "1회" },
+    { no: 25, name: "이재원", good: "본인결혼", bad: "", total: "1회" },
+    { no: 26, name: "장원창", good: "", bad: "부친상 모친상", total: "2회" },
+    { no: 27, name: "김학수", good: "", bad: "모친상", total: "1회" },
+    { no: 28, name: "정윤제", good: "", bad: "", total: "" },
+    { no: 29, name: "김영기", good: "", bad: "", total: "" },
+    { no: 30, name: "안병욱", good: "", bad: "", total: "" },
+    { no: 31, name: "김두한", good: "", bad: "", total: "" },
+    { no: 32, name: "김성호", good: "자녀돌잔치", bad: "", total: "1회" },
+    { no: 33, name: "신상현", good: "", bad: "", total: "" },
+    { no: 34, name: "허성욱", good: "", bad: "", total: "" },
+    { no: 35, name: "남규진", good: "", bad: "", total: "" },
+    { no: 36, name: "이동실", good: "", bad: "", total: "" },
+    { no: 37, name: "안종익", good: "", bad: "", total: "" },
+    { no: 38, name: "정일만", good: "", bad: "빙부상", total: "1회" },
+    { no: 39, name: "이진희", good: "", bad: "부친상", total: "1회" },
+    { no: 40, name: "김관현", good: "", bad: "빙부상", total: "1회" },
+    ],
+  },
+
+  /* -----------------------------------------------------------------------
      6. 회비 납부안내
      - items: 회비 항목별 내역(항목명 / 산출 / 금액)
      - account: 입금계좌 (강조 박스로 표시)

@@ -100,8 +100,14 @@
       </div>
 
 
+      <!-- 탭 선택 -->
+      <div class="subtabs">
+        <button class="subtab active" data-tab="tab-roster">👥 회원명부</button>
+        <button class="subtab" data-tab="tab-cond">🎗️ 회원 경조사 내역</button>
+      </div>
+
       <!-- 명부 -->
-      <div id="member-list">
+      <div id="tab-roster" class="subtab-panel active">
         <div class="member-count" id="member-count"></div>
         <div class="member-table-wrap">
           <table class="members">
@@ -111,6 +117,11 @@
             <tbody id="member-tbody"></tbody>
           </table>
         </div>
+      </div>
+
+      <!-- 경조사 내역 -->
+      <div id="tab-cond" class="subtab-panel">
+        <div id="cond-content"></div>
       </div>
     </section>
   </div>
