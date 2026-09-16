@@ -946,7 +946,7 @@ const SITE_DATA = {
     title: "태화라이온스클럽 누적 경조사 내역",
     asOf: "2026. 8. 30일 기준",
     rows: [
-    { no: 1, name: "최연식", good: "본인결혼", bad: "장인상,모친상", total: "2회" },
+    { no: 1, name: "최연식", good: "본인결혼", bad: "장인상,모친상", total: "3회" },
     { no: 2, name: "원용철", good: "", bad: "", total: "" },
     { no: 3, name: "이재환", good: "", bad: "", total: "" },
     { no: 4, name: "박정기", good: "", bad: "", total: "" },
@@ -965,7 +965,7 @@ const SITE_DATA = {
     { no: 17, name: "박종언", good: "자녀결혼3회", bad: "장인상", total: "4회" },
     { no: 18, name: "김호식", good: "자녀결혼1회", bad: "장인상, 모친상, 빙모상", total: "4회" },
     { no: 19, name: "엄재일", good: "자녀결혼2회", bad: "장인상,장모상", total: "4회" },
-    { no: 20, name: "김철홍", good: "", bad: "장인상", total: "" },
+    { no: 20, name: "김철홍", good: "", bad: "장인상", total: "1회" },
     { no: 21, name: "김창룡", good: "", bad: "", total: "" },
     { no: 22, name: "황순만", good: "본인결혼", bad: "", total: "1회" },
     { no: 23, name: "주성대", good: "", bad: "", total: "" },
