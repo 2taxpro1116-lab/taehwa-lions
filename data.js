@@ -112,12 +112,22 @@ const SITE_DATA = {
     {
       year: 2026,
       month: 9,
-      open: true,           // 9월은 처음부터 펼쳐서 보이기
+      open: false,
       items: [
         { day: 9,  title: "골프회\n정기라운딩" },
         { day: 11, title: "1부회장 및\n신입회원 연수회" },
         { day: 14, title: "이사회" },
         { day: null, title: "월례회" },              // 날짜 미정
+      ],
+    },
+    {
+      year: 2026,
+      month: 10,
+      open: true,           // 10월은 처음부터 펼쳐서 보이기
+      items: [
+        { day: 14, title: "이사회,\n골프회 정기라운딩" },
+        { day: 23, title: "급식봉사" },
+        { day: 24, title: "합동월례회" },
       ],
     },
   ],
