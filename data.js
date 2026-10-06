@@ -125,9 +125,11 @@ const SITE_DATA = {
       month: 10,
       open: true,           // 10월은 처음부터 펼쳐서 보이기
       items: [
+        { day: 9,  title: "울산공업축제\n먹거리 부스 (지구행사)" },
         { day: 14, title: "이사회,\n골프회 정기라운딩" },
         { day: 23, title: "급식봉사" },
         { day: 24, title: "합동월례회" },
+        { day: 30, title: "총재배 공프대회\n(지구행사)" },
       ],
     },
   ],
